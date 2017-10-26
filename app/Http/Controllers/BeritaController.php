@@ -8,7 +8,7 @@ class BeritaController extends Controller
 {
     public function index()
     {
-    	return view('admin.berita.index');
+    	return view('admin.berita.berita');
     }
 
     public function show_all()

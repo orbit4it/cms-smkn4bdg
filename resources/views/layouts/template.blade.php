@@ -23,7 +23,7 @@
 	            	<div class="col p-0">
 			        	<img src="{{ asset('') }}image/smkn4.png" class="d-inline-block align-middle mr-3" alt="">
 	            	</div>
-	            	<div class="col p-0">
+	            	<div class="col px-0 pt-2">
 			        	<span>SMKN 4 BANDUNG</span><br>
 			        	<span class="small">Kuat Ma'rifat</span>
 	            	</div>
@@ -129,6 +129,25 @@
 			var marker = new google.maps.Marker({position:myCenter});
 			marker.setMap(map);
 		}
+
+		(function(){
+
+		  var parallax = document.querySelectorAll(".tentang"),
+		      speed = 0.2;
+
+		  window.onscroll = function(){
+		    [].slice.call(parallax).forEach(function(el,i){
+
+		      var windowYOffset = window.pageYOffset;
+			  var elBackgrounPos = "50% " + (windowYOffset * speed - 600) + "px";
+			  console.log(windowYOffset);
+			  console.log(elBackgrounPos);
+		      el.style.backgroundPosition = elBackgrounPos;
+
+		    });
+		  };
+
+		})();
 	</script>
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbJ83iOH3BNaVWtOjaKUikj9sx2OIHzfs&callback=myMap"></script>

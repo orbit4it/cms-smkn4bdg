@@ -9,7 +9,7 @@
         <div class="carousel-inner">
             @for ($i = 0; $i < (count($data) < 3 ? count($data) : 3); $i++)
             <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
-                <img class="d-block" src="{{ asset('uploads/' . $data[$i]->foto) }}" alt="Slide {{ $i }}">
+                <img class="d-block" src="{{ asset('uploads/' . $data[$i]->foto) }}" alt="{{ $data[$i]->judul }}">
                 <div class="carousel-caption text-center text-lg-right">
                 	<div class="container">
 						<h5>{{ $data[$i]->judul }}</h5>
@@ -38,10 +38,10 @@
                 @foreach ($data as $berita)
     			<div class="col-12 col-md-4">
     				<div class="card">
-						<img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="Card {{ asset('') }}/image cap">
+						<img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="{{ $berita->judul }}">
 						<div class="card-body">
 							<h5 class="card-title">{{ $berita->judul }}</h5>
-							<p class="card-text">{{ $berita->created_at->format('d F Y') }}</p>
+							<p class="card-text">{{ @$berita->created_at->format('d F Y') }}</p>
                             @php
                             $deskripsi = strip_tags($berita->deskripsi);
                             $deskripsi = trim(str_replace('&nbsp;', '', $deskripsi));

@@ -25,6 +25,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{url('admin/album')}}">
+                        <i class="fa fa-picture-o fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Album</span>
+                    </a>
+                </li>
+                <li>
                     <a href="{{url('admin/berita')}}">
                         <i class="fa fa-newspaper-o fa-fw">
                             <div class="icon-bg bg-orange"></div>

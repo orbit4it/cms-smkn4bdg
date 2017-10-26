@@ -24,6 +24,12 @@ Auth::routes();
 // Admin
 Route::middleware(['auth'])->group(function () {
 	Route::get('/admin', 'AdminController@index');
+
+	// Album
+	Route::get('/admin/album', 'AlbumController@index');
+	Route::get('/admin/album/create', 'AlbumController@create');
+
+	// Berita
 	Route::get('/admin/berita', 'BeritaController@index');
 	Route::get('/admin/berita/create', 'BeritaController@create');
 	Route::post('/admin/berita/store', 'BeritaController@store');

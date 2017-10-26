@@ -7,7 +7,7 @@
 
 	@foreach (\App\Berita::orderBy('created_at', 'DESC')->get()->take(4) as $beritaItem)
     <div class="card berita-item my-3">
-        <img class="card-img-top" src="{{ asset('uploads/' . $beritaItem->foto) }}" alt="Card {{ asset('') }}/image cap">
+        <img class="card-img-top" src="{{ asset('uploads/' . $beritaItem->foto) }}" alt="{{ $beritaItem->judul }}">
         <div class="card-body">
             <h5 class="card-title">{{ $beritaItem->judul }}</h5>
             <p class="card-text">{{ $beritaItem->created_at->format('d F Y') }}</p>

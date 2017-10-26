@@ -1,5 +1,5 @@
 @extends('admin.header')
-@section('title', 'Berita')
+@section('title', 'Album')
 @section('content')
 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
     <div class="page-header pull-left">
@@ -26,21 +26,21 @@
     	<div class="col-xs-12">
     		<div class="panel panel-default">
     			<div class="panel-heading">
-    				Form Berita
+    				Form Album
     			</div>
-				<form action="{{ @$berita ? url('admin/berita/' . $berita->id_berita . '/update') : url('admin/berita/store') }}" method="POST" enctype="multipart/form-data" class="form-berita">
+				<form action="{{ @$album ? url('admin/album/' . $album->id_berita . '/update') : url('admin/album/store') }}" method="POST" enctype="multipart/form-data" class="form-album">
 					{{ csrf_field() }}
-					@if (@$berita)
+					@if (@$album)
 					{{ method_field('PATCH') }}
 					@endif
 					<div class="panel-body">
 						<div class="form-group">
 							<label>Judul</label>
-							<input type="text" name="judul" class="form-control" value="{{ old('judul') ? old('judul') : (@$berita ? $berita->judul : '') }}">
+							<input type="text" name="judul" class="form-control" value="{{ old('judul') ? old('judul') : (@$album ? $album->judul : '') }}">
 						</div>
 						<div class="form-group">
 							<label>Deskripsi</label>
-							<textarea class="form-control" name="deskripsi" id="editor" rows="5">{{ old('deskripsi') ? old('deskripsi') : (@$berita ? $berita->deskripsi : '') }}</textarea>
+							<textarea class="form-control" name="deskripsi" id="editor" rows="5">{{ old('deskripsi') ? old('deskripsi') : (@$album ? $album->deskripsi : '') }}</textarea>
 						</div>
 						<div class="form-group">
 							<label>Gambar Utama</label>
@@ -48,7 +48,7 @@
 						</div>
 					</div>
 					<div class="panel-footer text-right">
-						<a class="btn" href="{{ url('admin/berita') }}">Cancel</a>
+						<a class="btn" href="{{ url('admin/album') }}">Cancel</a>
 						<button type="submit" class="btn btn-primary">Save changes</button>
 					</div>
 				</form>

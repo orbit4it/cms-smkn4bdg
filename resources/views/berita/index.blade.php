@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-md-8 col-12 mb-3">
                     <div class="card">
-                        <img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="Card image cap">
+                        <img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="{{ $berita->judul }}">
                         <div class="card-body">
                             <h2 class="card-title">{{ $berita->judul }}</h2>
                             <p class="card-text">{{ $berita->created_at->format('l, d F Y') }}</p>

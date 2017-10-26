@@ -1,0 +1,331 @@
+body {
+	font-family: 'robotolight', sans-serif;
+}
+
+button:focus {
+	outline: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+/* Navigation */
+
+.navbar {
+	box-shadow: 0px 2px 10px #333;
+}
+
+.navbar-brand span {
+	color: #fff;
+}
+
+.navbar-brand img {
+	width:  60px;
+	height: 60px;
+}
+
+.nav-item {
+	margin-right: -1rem;
+}
+
+.navbar-nav .nav-item ,
+.navbar-nav .nav-item a.nav-link {
+	padding: .5rem 1rem;
+	color: #ddd;
+}
+
+.navbar-nav .nav-item a.nav-link:focus {
+	color: #ddd;
+}
+
+.navbar-nav .nav-item a.nav-link:hover {
+	color: #fff;
+	background-color: #36404b;
+}
+
+.dropdown-menu {
+	background-color: #343a40;
+	border: 0;
+}
+
+.dropdown-item:hover {
+	background-color: #36404b;
+	color: #fff;
+}
+
+.dropdown-menu a {
+	color: #fff;
+}
+
+.navbar-toggler {
+	color: #fff;
+}
+
+/* Carousel */
+
+.carousel {
+	margin-top: 86px;
+	overflow: hidden;
+}
+
+.carousel-inner {
+	overflow: hidden;
+}
+
+.carousel img {
+	filter: brightness(80%);
+}
+
+.carousel-caption {
+	top: calc(100vh - 90px - 60px);
+	background-color: #3387bc;
+	left: 0;
+	right: 0;
+	text-align: right;
+	height: 80px;
+}
+
+@media (min-width: 768px) {
+	.carousel-inner {
+		height: 570px;
+	}
+	.carousel img {
+		height: 570px;
+	}
+	.carousel-caption {
+		top: calc(570px - 80px);
+	}
+}
+
+@media (min-width: 992px) {
+	.carousel-inner {
+		height: calc(100vh - 86px);
+	}
+	.carousel img {
+		width: 100%;
+		height: auto;
+	}
+	.carousel-caption {
+		top: calc(100vh - 90px - 60px);
+	}
+}
+
+@media (max-width: 575px) {
+	.carousel img {
+		margin-left: -50%;
+	}
+}
+
+@media (max-width: 767px) {
+	.carousel-caption {
+		top: calc(500px - 80px);
+	}
+}
+
+@media (max-width: 991px) {
+	.carousel {
+		margin-top: 46px;
+	}
+}
+
+.carousel-caption h5 {
+	text-transform: capitalize;
+}
+
+.carousel-control-next, .carousel-control-prev {
+	width: 5%;
+}
+
+.carousel-indicators {
+	justify-content: left;
+	margin-left: 8%;
+}
+
+/* News */
+
+section {
+	padding: 5em 0 4em;
+}
+
+.news .container {
+	padding-left : 30px;
+	padding-right: 30px;
+}
+
+.news .title {
+	padding: 10px 0;
+}
+
+.news-content {
+	margin-left: -30px;
+	margin-right: -30px;
+}
+
+.news .card,
+.news .card img {
+	border-radius: 0;
+}
+
+.news .card {
+	border: 0;
+	margin-bottom: 30px;
+}
+
+.news .card-body {
+	padding: 1.25rem 0;
+}
+
+.news .card-body .card-text {
+	margin: 0;
+}
+
+
+/* Keahlian */
+.keahlian {
+	background-color: #f1f1f1;
+}
+
+.keahlian .title {
+	padding: 10px 0;
+	margin-bottom: 40px;
+}
+
+.keahlian-item {
+	padding-bottom: 50px;
+}
+
+.keahlian-img {
+	width: 50%;
+}
+
+.keahlian-text h5 {
+	margin-top: 30px;
+}
+
+.keahlian-text p {
+	margin-top: 20px;
+	text-align: justify;
+	text-align-last: center;
+}
+
+/* Sambutan */
+
+.sambutan {
+	background-color: #4a9ed3;
+	color: #fff;
+}
+
+.sambutan .title {
+	padding: 10px 0;
+	margin-bottom: 40px;
+}
+
+.sambutan-overlay {
+	overflow: hidden;
+	width:  220px;
+	height: 220px;
+	border-radius: 100%;
+}
+
+.sambutan-overlay img {
+	margin-top: -100px;
+	width: 100%;
+}
+
+.sambutan-content p {
+	text-align: justify;
+}
+
+/* Tentang */
+.tentang {
+	background-image: url("../../image/smkn4-c.jpg");
+	background-size: cover;
+	background-position: center;
+	color: #fff;
+}
+
+.tentang .container {
+	padding-left : 30px;
+	padding-right: 30px;
+}
+
+.tentang .title {
+	padding: 10px 0;
+	margin-bottom: 40px;
+}
+
+.tentang p {
+	text-align: justify;
+}
+
+/* Top Footer */
+.top-footer {
+	padding: 4em 0;
+	background-color: #292929;
+	color: #fff;
+}
+
+#googleMap {
+	width: 100%;
+	height: 200px;
+	margin-bottom: 30px;
+}
+
+.footer-info img {
+	width:  90px;
+	height: 90px;
+	margin-bottom: 15px;
+}
+
+.footer-info p {
+	font-weight: bold;
+}
+
+.footer-info a {
+	color: #fff;
+}
+
+.footer-info .fa {
+	width:  40px;
+	height: 40px;
+	padding: 12px;
+}
+
+.footer-info .fa-twitter {
+	background-color: #1da1f3;
+}
+
+.footer-info .fa-facebook {
+	background-color: #3b5998;
+}
+
+.footer-nav li {
+	list-style: none;
+}
+
+.footer-nav li a {
+	color: #ddd;
+	line-height: 2.3em;
+	text-decoration: none;
+}
+
+.footer-nav li a:hover {
+	color: #fff;
+}
+
+/* Bottom Footer */
+.bottom-footer {
+	background-color: #212121;
+	color: #fff;
+	padding: 1rem 0;
+}
+
+.bottom-footer a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.bottom-footer p {
+	margin: 0;
+}

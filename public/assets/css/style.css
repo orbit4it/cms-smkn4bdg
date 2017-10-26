@@ -1,0 +1,230 @@
+.logo-text {
+	font-size:16px !important;
+}
+
+.logo-text {
+}
+
+.logo {
+	width:24px;
+}
+
+.logo-big {
+	display:block;
+	margin:0 auto;
+	width:128px;
+	margin-bottom:10px;
+}
+
+.header-content h1 { 
+	text-align:center;
+}
+
+.user-panel {
+	text-align:center;
+}
+
+/* Style for Sidebar */
+#side-menu .thumb, #side-menu .info {
+	float:none;
+}
+
+#side-menu .thumb {
+	display:inline-block;
+}
+
+#side-menu .info {
+	padding-left:0px;
+	padding-right:0px;
+}
+
+#signin-page, #error-page {
+	background: url(../images/smkn4bandung.png) center center fixed;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding: 5px;
+	height:auto;
+}
+
+#error-page h4 {
+	color:#ddd;
+}
+
+#error-page p {
+	color:#ccc;
+}
+
+.file-preview {
+	position:relative;
+}
+
+.file-icon {
+	background:url(../images/xlsm64.png) no-repeat;
+	width:64px;
+	height:64px;
+}
+
+h4.file-name {
+	font-size:14px;
+	font-weight:bold;
+}
+
+#previews .panel-body {
+	
+}
+
+#previews .panel-error {
+	background: #e74c3c;
+	color: #fff;
+}
+
+#previews a:hover {
+	color:#777;
+}
+
+#previews .progress,
+#previews .panel-footer {
+	padding:0;
+	margin:0;
+	height:100%;
+}
+
+#previews .progress-bar {
+	height:10px;
+}
+
+#previews .dz-error {
+	color:red;
+}
+
+#my-dropzone.dropzone {
+	background:rgba(0,0,0,0.05);
+}
+
+#my-dropzonee.dropzone.dz-started .dz-message {
+	display: block;
+	opacity: 0.05;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0.05)";
+	filter: alpha(opacity=0.05);
+}
+
+#my-dropzone .row {
+	cursor:pointer;
+}
+
+#previews button.close {
+	margin-right:5px !important;
+	margin-top:5px !important;
+	cursor:pointer;
+}
+
+#previews .label {
+	font-size:12px;
+}
+
+#previews .panel-danger {
+	border:1px dashed;
+}
+
+.fileinput-new, .fileinput-exists {
+	color:#fff !important;
+}
+
+.glyphicon.fileinput-exists {
+	color:inherit !important;
+}
+
+.page_mess_error a {
+	color:#fff;
+	font-weight:bold;
+}
+
+#previews p.message a {
+	cursor:pointer;
+}
+
+#previews p.message a:hover {
+	text-decoration:underline;
+}
+
+#table td {
+	vertical-align:middle;
+}
+
+.user-panel {
+	clear:both;
+}
+
+/* Style for Calendar */
+.calendar.label-danger {
+	color:#fff;
+}
+
+/* Animate Glyphicon Refresh */
+.fa-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -ms-animation: spin .7s infinite linear;
+    -webkit-animation: spinw .7s infinite linear;
+    -moz-animation: spinm .7s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}
+  
+@-webkit-keyframes spinw {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes spinm {
+    from { -moz-transform: rotate(0deg);}
+    to { -moz-transform: rotate(360deg);}
+}
+
+.export label {
+    display:block;
+}
+    
+.overflow {
+    overflow: auto;
+    height: 150px;
+    margin-top:6px;
+}
+    
+.overflow pre {
+    background: none;
+    border: none;
+}
+
+.alert-success {
+    color: #5cb85c!important;
+    font-weight: bold;
+}
+
+.alert-error {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #909;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #909;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #909;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #909;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #909;
+}

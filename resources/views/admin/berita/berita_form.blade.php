@@ -36,11 +36,11 @@
 					<div class="panel-body">
 						<div class="form-group">
 							<label>Judul Berita</label>
-							<input type="text" name="judul_berita" class="form-control" value="{{ old('judul_berita') ? old('judul_berita') : (@$berita ? $berita->judul_berita : '') }}">
+							<input type="text" name="judul" class="form-control" value="{{ old('judul') ? old('judul') : (@$berita ? $berita->judul : '') }}">
 						</div>
 						<div class="form-group">
 							<label>Isi Berita</label>
-							<textarea class="form-control" name="isi_berita" id="editor" rows="5">{{ old('isi_berita') ? old('isi_berita') : (@$berita ? $berita->isi_berita : '') }}</textarea>
+							<textarea class="form-control" name="deskripsi" id="editor" rows="5">{{ old('deskripsi') ? old('deskripsi') : (@$berita ? $berita->deskripsi : '') }}</textarea>
 						</div>
 						<div class="form-group">
 							<label>Gambar Berita</label>

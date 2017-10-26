@@ -7,21 +7,21 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ url('berita') }}">Berita</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $berita->judul_berita }}</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ $berita->judul }}</li>
                 </ol>
             </nav>
             <div class="row">
-                <div class="col-8">
+                <div class="col-md-8 col-12 mb-3">
                     <div class="card">
                         <img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="Card image cap">
                         <div class="card-body">
-                            <h2 class="card-title">{{ $berita->judul_berita }}</h2>
+                            <h2 class="card-title">{{ $berita->judul }}</h2>
                             <p class="card-text">{{ $berita->created_at->format('l, d F Y') }}</p>
-                            <p class="card-text">{!! nl2br($berita->isi_berita) !!}</p>
+                            <p class="card-text">{!! $berita->deskripsi !!}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4 col-12">
                     @include('layouts.sidebar')
                 </div>
             </div>

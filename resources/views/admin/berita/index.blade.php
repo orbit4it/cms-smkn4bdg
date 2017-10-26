@@ -44,7 +44,7 @@
 			    			@foreach (\App\Berita::orderBy('created_at', 'DESC')->get() as $berita)
 			    			<tr>
 			    				<td>{{ @$i ? $i += 1 : $i = 1 }}</td>
-			    				<td>{{ $berita->judul_berita }}</td>
+			    				<td>{{ $berita->judul }}</td>
 			    				<td>{{ $berita->created_at->format('l, d F Y - H:i') }}</td>
 			    				<td>
 			    					<form action="{{ url('admin/berita/' . $berita->id_berita . '/delete') }}" method="POST">

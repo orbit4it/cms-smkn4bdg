@@ -15,14 +15,14 @@
                     <div class="card">
                         <img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="Card {{ asset('') }}/image cap">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $berita->judul_berita }}</h5>
+                            <h5 class="card-title">{{ $berita->judul }}</h5>
                             <p class="card-text">{{ $berita->created_at->format('d F Y') }}</p>
                             @php
-                            $isi_berita = strip_tags($berita->isi_berita);
-                            $isi_berita = trim(str_replace('&nbsp;', '', $isi_berita));
+                            $deskripsi = strip_tags($berita->deskripsi);
+                            $deskripsi = trim(str_replace('&nbsp;', '', $deskripsi));
                             @endphp
-                            <p class="card-text">{{ substr($isi_berita, 0, 42) }}{{ strlen($isi_berita) > 42 ? '...' : '' }}</p>
-                            <a href="{{ url('berita/' . $berita->id_berita) }}" class="">Baca Selengkapnya</a>
+                            <p class="card-text">{{ substr($deskripsi, 0, 42) }}{{ strlen($deskripsi) > 42 ? '...' : '' }}</p>
+                            <a href="{{ url('berita/' . $berita->slug) }}" class="">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </div>

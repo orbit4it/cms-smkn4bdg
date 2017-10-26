@@ -19,8 +19,15 @@
     <nav class="navbar navbar-expand-lg bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{ url('') }}">
-	        	<img src="{{ asset('') }}image/smkn4.png" class="d-inline-block align-middle mr-3" alt="">
-	        	<span>SMKN 4 BANDUNG</span>
+            	<div class="row">
+	            	<div class="col p-0">
+			        	<img src="{{ asset('') }}image/smkn4.png" class="d-inline-block align-middle mr-3" alt="">
+	            	</div>
+	            	<div class="col p-0">
+			        	<span>SMKN 4 BANDUNG</span><br>
+			        	<span class="small">Kuat Ma'rifat</span>
+	            	</div>
+            	</div>
 	        </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
@@ -30,38 +37,39 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('') }}">Beranda</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('berita') }}">Berita</a>
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Info
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="{{ url('') }}">Sejarah</a>
+							<a class="dropdown-item" href="{{ url('') }}">Visi & Misi</a>
+							<a class="dropdown-item" href="{{ url('') }}">Data Pokok Sekolah</a>
+							<a class="dropdown-item" href="{{ url('') }}">Data Siswa</a>
+							<a class="dropdown-item" href="{{ url('') }}">Data Guru</a>
+							<a class="dropdown-item" href="{{ url('') }}">Fasilitas</a>
+							<a class="dropdown-item" href="{{ url('') }}">Virtual Tour</a>
+						</div>
                     </li>
                     <li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Studi
+							Program Studi
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="{{ url('') }}">Teknik Komputer Jaringan</a>
 							<a class="dropdown-item" href="{{ url('') }}">Rekayasa Perangkat Lunak</a>
 							<a class="dropdown-item" href="{{ url('') }}">Multimedia</a>
-							<a class="dropdown-item" href="{{ url('') }}">Teknik Otomasi Industri</a>
-							<a class="dropdown-item" href="{{ url('') }}">Teknik Instalasi Tenaga Listrik</a>
+							<a class="dropdown-item" href="{{ url('') }}">TOI</a>
+							<a class="dropdown-item" href="{{ url('') }}">TITL</a>
 							<a class="dropdown-item" href="{{ url('') }}">Audio Video</a>
 						</div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('') }}">Sambutan</a>
+                        <a class="nav-link" href="{{ url('') }}">Ekstrakurikuler</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('') }}">Tentang</a>
+                        <a class="nav-link" href="prestasi.smkn4bdg.sch.id">Prestasi</a>
                     </li>
-                    <li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Lainnya
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="{{ url('') }}">Item 1</a>
-							<a class="dropdown-item" href="{{ url('') }}">Item 1</a>
-							<a class="dropdown-item" href="{{ url('') }}">Item 1</a>
-						</div>
-					</li>
                 </ul>
             </div>
         </div>
@@ -79,9 +87,15 @@
 		    		<div class="col-12 col-sm-6 col-lg-4 offset-lg-1 footer-info text-center text-sm-left mb-3 pb-3">
 		    			<img src="{{ asset('') }}image/smkn4.png">
 		    			<h5>SMK NEGERI 4 BANDUNG</h5>
-		    			<p>Jalan Kliningan Nomor 6 Buah Batu</p>
-		    			<a href="#"><i class="fa fa-twitter fa-lg"></i></a>
-		    			<a href="#"><i class="fa fa-facebook fa-lg"></i></a>
+		    			<p>
+		    				Jalan Kliningan Nomor 6 Buah Batu<br>
+		    				Telp/Fax : (022) - 7303736<br>
+			    			Kode Pos : 40264 Kota Bandung<br>
+			    			Provinsi Jawa Barat<br>
+			    			Indonesia
+			    		</p>
+		    			<a href="https://twitter.com/smkn4bdg"><i class="fa fa-twitter fa-lg"></i></a>
+		    			<a href="https://www.facebook.com/smkn4bandung/"><i class="fa fa-facebook fa-lg"></i></a>
 		    		</div>
 		    		<div class="col-12 col-sm-6 col-lg-4">
 		    			<ul class="footer-nav">

@@ -9,10 +9,10 @@ class Berita extends Model
     protected $table = 'berita';
     protected $primaryKey = 'id_berita';
     protected $fillable = [
-    	'judul_berita',
-    	'isi_berita',
-    	'tanggal_berita',
+    	'judul',
+    	'deskripsi',
     	'foto',
+    	'slug'
     ];
 
     protected $dates = [

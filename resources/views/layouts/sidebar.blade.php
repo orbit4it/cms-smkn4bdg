@@ -9,14 +9,14 @@
     <div class="card berita-item my-3">
         <img class="card-img-top" src="{{ asset('uploads/' . $beritaItem->foto) }}" alt="Card {{ asset('') }}/image cap">
         <div class="card-body">
-            <h5 class="card-title">{{ $beritaItem->judul_berita }}</h5>
+            <h5 class="card-title">{{ $beritaItem->judul }}</h5>
             <p class="card-text">{{ $beritaItem->created_at->format('d F Y') }}</p>
             @php
-            $isi_berita = strip_tags($beritaItem->isi_berita);
-            $isi_berita = trim(str_replace('&nbsp;', '', $isi_berita));
+            $deskripsi = strip_tags($beritaItem->deskripsi);
+            $deskripsi = trim(str_replace('&nbsp;', '', $deskripsi));
             @endphp
-			<p class="card-text">{{ substr($isi_berita, 0, 42) }}{{ strlen($isi_berita) > 42 ? '...' : '' }}</p>
-            <a href="{{ url('berita/' . $beritaItem->id_berita) }}">Baca Selengkapnya</a>
+			<p class="card-text">{{ substr($deskripsi, 0, 42) }}{{ strlen($deskripsi) > 42 ? '...' : '' }}</p>
+            <a href="{{ url('berita/' . $beritaItem->slug) }}">Baca Selengkapnya</a>
         </div>
     </div>
 	@endforeach

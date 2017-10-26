@@ -129,10 +129,6 @@ button:focus {
 	}
 }
 
-.carousel-caption h5 {
-	text-transform: capitalize;
-}
-
 .carousel-control-next, .carousel-control-prev {
 	width: 5%;
 }
@@ -239,8 +235,9 @@ section {
 
 /* Tentang */
 .tentang {
-	background-image: url("../../image/smkn4-c.jpg");
+	background-image: url("../image/smkn4-c.jpg");
 	background-size: cover;
+	background-attachment: fixed;
 	background-position: center;
 	color: #fff;
 }
@@ -279,7 +276,7 @@ section {
 }
 
 .footer-info p {
-	font-weight: bold;
+	font-size: .9em;
 }
 
 .footer-info a {

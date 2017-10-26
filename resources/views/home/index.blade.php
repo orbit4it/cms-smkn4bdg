@@ -2,26 +2,21 @@
 @section('content')
     <div id="slider" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#slider" data-slide-to="0" class="active"></li>
-            <li data-target="#slider" data-slide-to="1"></li>
+            @for ($i = 0; $i < (count($data) < 3 ? count($data) : 3); $i++)
+            <li data-target="#slider" data-slide-to="{{ $i }}" class="{{ $i == 0 ? 'active' : '' }}"></li>
+            @endfor
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block" src="{{ asset('') }}/image/seleknas2015.jpg" alt="First slide">
+            @for ($i = 0; $i < (count($data) < 3 ? count($data) : 3); $i++)
+            <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
+                <img class="d-block" src="{{ asset('uploads/' . $data[$i]->foto) }}" alt="Slide {{ $i }}">
                 <div class="carousel-caption text-center text-lg-right">
                 	<div class="container">
-						<h5>SMKN 4 BANDUNG</h5>
+						<h5>{{ $data[$i]->judul }}</h5>
 					</div>
 				</div>
             </div>
-            <div class="carousel-item">
-                <img class="d-block" src="{{ asset('') }}/image/lkskota2017.jpg" alt="Second slide">
-                <div class="carousel-caption text-center text-lg-right">
-                	<div class="container">
-						<h5>INFORMASI SOAL LKS KOTA BANDUNG 2017 BIDANG LOMBA TEKNOLOGI</h5>
-                	</div>
-				</div>
-            </div>
+            @endfor
         </div>
         <a class="carousel-control-prev" href="#slider" role="button" data-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -40,19 +35,19 @@
     			<a href="{{ url('berita') }}">Lihat Semua Berita</a>
     		</div>
     		<div class="row news-content">
-                @foreach (\App\Berita::orderBy('created_at', 'DESC')->get()->take(6) as $berita)
+                @foreach ($data as $berita)
     			<div class="col-12 col-md-4">
     				<div class="card">
 						<img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="Card {{ asset('') }}/image cap">
 						<div class="card-body">
-							<h5 class="card-title">{{ $berita->judul_berita }}</h5>
+							<h5 class="card-title">{{ $berita->judul }}</h5>
 							<p class="card-text">{{ $berita->created_at->format('d F Y') }}</p>
                             @php
-                            $isi_berita = strip_tags($berita->isi_berita);
-                            $isi_berita = trim(str_replace('&nbsp;', '', $isi_berita));
+                            $deskripsi = strip_tags($berita->deskripsi);
+                            $deskripsi = trim(str_replace('&nbsp;', '', $deskripsi));
                             @endphp
-							<p class="card-text">{{ substr($isi_berita, 0, 42) }}{{ strlen($isi_berita) > 42 ? '...' : '' }}</p>
-							<a href="{{ url('berita/' . $berita->id_berita) }}" class="">Baca Selengkapnya</a>
+							<p class="card-text">{{ substr($deskripsi, 0, 42) }}{{ strlen($deskripsi) > 42 ? '...' : '' }}</p>
+							<a href="{{ url('berita/' . $berita->slug) }}" class="">Baca Selengkapnya</a>
 						</div>
 					</div>
     			</div>

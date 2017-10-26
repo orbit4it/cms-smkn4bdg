@@ -16,10 +16,10 @@ class BeritaController extends Controller
     	return view('berita.show_all');
     }
 
-    public function show($id='')
+    public function show($slug='')
     {
     	return view('berita.index', [
-    		'berita' => \App\Berita::find($id)
+    		'berita' => \App\Berita::where('slug', $slug)->first()
     	]);
     }
 
@@ -31,8 +31,8 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request, [
-    		'judul_berita' => 'required|max:255',
-    		'isi_berita' => 'required',
+    		'judul' => 'required|max:255',
+    		'deskripsi' => 'required',
     		'foto' => 'required|max:10000'
     	]);
 
@@ -41,15 +41,16 @@ class BeritaController extends Controller
     	$foto = '';
 
     	if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-    		$foto = \Carbon\Carbon::now()->format('Y-m-d-H-i-s') . ' ' . $input['judul_berita'] . '.' . $request->file('foto')->getClientOriginalExtension();
+    		$foto = \Carbon\Carbon::now()->format('Y-m-d-H-i-s') . ' ' . $input['judul'] . '.' . $request->file('foto')->getClientOriginalExtension();
     		$foto = str_replace(' ', '-', $foto);
     		$request->file('foto')->storeAs('', $foto);
     	}
 
     	$data = [
-    		'judul_berita' => $input['judul_berita'],
-    		'isi_berita' => $input['isi_berita'],
+    		'judul' => $input['judul'],
+    		'deskripsi' => $input['deskripsi'],
     		'foto' => $foto,
+    		'slug' => str_slug($input['judul'], '-'),
     	];
 
     	\App\Berita::create($data);
@@ -67,25 +68,26 @@ class BeritaController extends Controller
     public function update($id='', Request $request)
     {
     	$this->validate($request, [
-    		'judul_berita' => 'required|max:255',
-    		'isi_berita' => 'required',
-    		'foto' => 'mimes:png,jpg|max:10'
+    		'judul' => 'required|max:255',
+    		'deskripsi' => 'required',
+    		'foto' => 'max:10000'
     	]);
 
     	$input = $request->all();
 
+    	$data = [
+    		'judul' => $input['judul'],
+    		'deskripsi' => $input['deskripsi'],
+    	];
+
     	if (@$input['foto']) {
     		if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-	    		$foto = \Carbon\Carbon::now()->format('Y-m-d-H-i-s') . ' ' . $input['judul_berita'] . '.' . $request->file('foto')->getClientOriginalExtension();
+	    		$foto = \Carbon\Carbon::now()->format('Y-m-d-H-i-s') . ' ' . $input['judul'] . '.' . $request->file('foto')->getClientOriginalExtension();
 	    		$foto = str_replace(' ', '-', $foto);
 	    		$request->file('foto')->storeAs('', $foto);
+	    		$data['foto'] = $foto;
 	    	}
     	}
-
-    	$data = [
-    		'judul_berita' => $input['judul_berita'],
-    		'isi_berita' => $input['isi_berita']
-    	];
 
     	$berita = \App\Berita::find($id);
     	$berita->update($data);

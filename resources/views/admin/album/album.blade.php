@@ -45,10 +45,9 @@
 			    				<td>{{ $album->judul }}</td>
 			    				<td>
 			    					<form action="{{ url('admin/album/' . $album->id_album . '/delete') }}" method="POST">
-			    						{{ csrf_field() }}
-			    						{{ method_field('DELETE') }}
+			    						<a href="{{ url('admin/album/' . $album->id_album . '/galeri') }}" class="btn btn-success"><i class="fa fa-file-image-o"></i></a>
 				    					<a href="{{ url('admin/album/' . $album->id_album) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
-				    					<button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i></button>
+				    					<button class="btn btn-danger btn-delete" type="submit"><i class="fa fa-trash"></i></button>
 			    					</form>
 			    				</td>
 			    			</tr>
@@ -67,4 +66,36 @@
 @push('css')
 @endpush
 @push('js')
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.btn-delete').click(function(e) {
+			e.preventDefault();
+			var url = $(this).parent().attr('action');
+			var tr = $(this).parent().parent().parent();
+			swal({
+				title: "Are you sure?",
+				text: "Your will not be able to recover this imaginary file!",
+				type: "warning",
+				showCancelButton: true,
+				confirmButtonClass: "btn-danger",
+				confirmButtonText: "Yes, delete it!",
+				closeOnConfirm: false
+			},
+			function(){
+				console.log(1);
+				$.ajax({
+					data: {
+						'_token' : '{{ csrf_token() }}',
+						'_method' : 'DELETE',
+					},
+					url: url,
+					method: 'POST',
+				}).done(function(result) {
+					swal("Deleted!", "Your imaginary file has been deleted.", "success");
+					tr.hide();
+				});
+			});
+		});
+	});
+</script>
 @endpush

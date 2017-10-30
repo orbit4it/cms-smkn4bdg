@@ -30,20 +30,18 @@ class BeritaController extends Controller
 
     public function store(Request $request)
     {
-    	$this->validate($request, [
-    		'judul' => 'required|max:255',
-    		'deskripsi' => 'required',
-    		'foto' => 'required|max:10000'
-    	]);
+    	$this->validate($request, $this->rules());
 
     	$input = $request->all();
 
     	$foto = '';
 
-    	if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-    		$foto = \Carbon\Carbon::now()->format('Y-m-d-H-i-s') . ' ' . $input['judul'] . '.' . $request->file('foto')->getClientOriginalExtension();
-    		$foto = str_replace(' ', '-', $foto);
+		if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+    		$foto = \Carbon\Carbon::now()->format('Y-m-d-H-i-s') . ' ' . $input['judul'];
+    		$foto = str_slug($foto, '-');
+    		$foto .=  '.' . $request->file('foto')->getClientOriginalExtension();
     		$request->file('foto')->storeAs('', $foto);
+    		$data['foto'] = $foto;
     	}
 
     	$data = [
@@ -51,6 +49,8 @@ class BeritaController extends Controller
     		'deskripsi' => $input['deskripsi'],
     		'foto' => $foto,
     		'slug' => str_slug($input['judul'], '-'),
+    		'id_kategori' => $input['id_kategori'],
+    		'hits' => 0
     	];
 
     	\App\Berita::create($data);
@@ -67,26 +67,22 @@ class BeritaController extends Controller
 
     public function update($id='', Request $request)
     {
-    	$this->validate($request, [
-    		'judul' => 'required|max:255',
-    		'deskripsi' => 'required',
-    		'foto' => 'max:10000'
-    	]);
+    	$this->validate($request, $this->rules());
 
     	$input = $request->all();
 
     	$data = [
     		'judul' => $input['judul'],
     		'deskripsi' => $input['deskripsi'],
+    		'id_kategori' => $input['id_kategori'],
     	];
 
-    	if (@$input['foto']) {
-    		if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-	    		$foto = \Carbon\Carbon::now()->format('Y-m-d-H-i-s') . ' ' . $input['judul'] . '.' . $request->file('foto')->getClientOriginalExtension();
-	    		$foto = str_replace(' ', '-', $foto);
-	    		$request->file('foto')->storeAs('', $foto);
-	    		$data['foto'] = $foto;
-	    	}
+		if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+    		$foto = \Carbon\Carbon::now()->format('Y-m-d-H-i-s') . ' ' . $input['judul'];
+    		$foto = str_slug($foto, '-');
+    		$foto .=  '.' . $request->file('foto')->getClientOriginalExtension();
+    		$request->file('foto')->storeAs('', $foto);
+    		$data['foto'] = $foto;
     	}
 
     	$berita = \App\Berita::find($id);
@@ -96,7 +92,17 @@ class BeritaController extends Controller
 
     public function delete($id)
     {
-    	\App\Berita::find($id)->delete();
-    	return redirect('admin/berita')->with('success', 'Berhasil Menghapus Berita');
+    	$berita = \App\Berita::find($id)->delete();
+    	return response()->json($berita);
+    }
+
+    public function rules()
+    {
+    	return [
+    		'judul' => 'required|max:150',
+    		'deskripsi' => 'required',
+    		'foto' => 'mimes:jpeg,png|max:10000',
+    		'id_kategori' => 'required|exists:kategori'
+    	];
     }
 }

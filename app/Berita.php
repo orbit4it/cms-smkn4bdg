@@ -12,7 +12,9 @@ class Berita extends Model
     	'judul',
     	'deskripsi',
     	'foto',
-    	'slug'
+    	'slug',
+        'id_kategori',
+        'hits'
     ];
 
     protected $dates = [

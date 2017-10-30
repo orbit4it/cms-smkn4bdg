@@ -42,10 +42,19 @@
 							<label>Deskripsi</label>
 							<textarea class="form-control" name="deskripsi" id="editor" rows="5">{{ old('deskripsi') ? old('deskripsi') : (@$berita ? $berita->deskripsi : '') }}</textarea>
 						</div>
-						<div class="form-group">
-							<label>Gambar Utama</label>
-							<input type="file" name="foto">
-						</div>
+                        <div class="form-group">
+                            <label>Gambar Utama</label>
+                            <input type="file" name="foto">
+                        </div>
+                        <div class="form-group">
+                            <label>Gambar Utama</label>
+                            <select name="id_kategori" class="form-control">
+                                <option>Pilih Kategori</option>
+                                @foreach (\App\Kategori::all() as $kategori)
+                                <option value="{{ $kategori->id_kategori }}" {{ old('id_kategori') == $kategori->id_kategori ? 'selected' : @$berita ? $berita->id_kategori == $kategori->id_kategori ? 'selected' : '' : ''}}>{{ $kategori->nama_kategori }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 					</div>
 					<div class="panel-footer text-right">
 						<a class="btn" href="{{ url('admin/berita') }}">Cancel</a>
@@ -64,8 +73,8 @@
 
 @endpush
 @push('js')
-<script src="../../../vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-<script src="../../../vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+<script src="{{ asset('assets') }}/vendors/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="{{ asset('assets') }}/vendors/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 <script type="text/javascript">
 
 	$('textarea').ckeditor({
@@ -82,28 +91,28 @@
         },
 	});
 
-	function processClose(file) {
-        $(".modal-choose-file").modal('hide');
-    }
+	// function processClose(file) {
+ //        $(".modal-choose-file").modal('hide');
+ //    }
     
-    function processSelectedFile(file) {
-        $(".filename").show().html('<i class="fa fa-paperclip"></i> ' + file);
-        $(".btnChooseFile").html("Ganti File");
-        $("[name=file]").val(file);
-    }
+ //    function processSelectedFile(file) {
+ //        $(".filename").show().html('<i class="fa fa-paperclip"></i> ' + file);
+ //        $(".btnChooseFile").html("Ganti File");
+ //        $("[name=file]").val(file);
+ //    }
     
-    $(function() {
-        @if(!empty($result))
-            $(".btnChooseFile").html("Ganti File");
-        @else
-            $('.filename').hide();
-        @endif
+ //    $(function() {
+ //        @if(!empty($result))
+ //            $(".btnChooseFile").html("Ganti File");
+ //        @else
+ //            $('.filename').hide();
+ //        @endif
         
-        $(".btnChooseFile").click(function() {
-            $(".modal-choose-file").modal('show');
-            $(".modal-body").html('<iframe src="{{ url('elfinder/template/file') }}"></iframe>');
-        });
-    });
+ //        $(".btnChooseFile").click(function() {
+ //            $(".modal-choose-file").modal('show');
+ //            $(".modal-body").html('<iframe src="{{ url('elfinder/template/file') }}"></iframe>');
+ //        });
+ //    });
 
 </script>
 

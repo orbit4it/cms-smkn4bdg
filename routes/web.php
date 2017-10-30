@@ -14,20 +14,44 @@
 // Home
 Route::get('/', 'HomeController@index');
 
+// Halaman
+Route::get('/info/{id}', 'HalamanController@show');
+
 // Berita
-Route::get( '/berita', 'BeritaController@show_all');
-Route::get( '/berita/{id}', 'BeritaController@show');
+Route::get('/berita', 'BeritaController@show_all');
+Route::get('/berita/{id}', 'BeritaController@show');
+
+// Program Studi
+Route::get('/program-studi/{id}', function($id='') {
+	return view('studi.' . $id);
+});
+
+// Ekstrakurikuler
+Route::get('/esktrakurikuler/{id}', function($id='') {
+	return view('ekskul.' . $id);
+});
 
 // Auth
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');
 
 // Admin
 Route::middleware(['auth'])->group(function () {
 	Route::get('/admin', 'AdminController@index');
 
-	// Album
+	// Album & Galeri
 	Route::get('/admin/album', 'AlbumController@index');
 	Route::get('/admin/album/create', 'AlbumController@create');
+	Route::post('/admin/album/store', 'AlbumController@store');
+	Route::get('/admin/album/{id}', 'AlbumController@edit');
+	Route::patch('/admin/album/{id}/update', 'AlbumController@update');
+	Route::delete('/admin/album/{id}/delete', 'AlbumController@delete');
+	Route::get('/admin/album/{id}/galeri', 'AlbumController@galeri');
+	Route::post('/admin/album/{id}/store', 'AlbumController@store_galeri');
+	Route::get('/admin/album/{id}/galeri/{id_galeri}', 'AlbumController@edit_galeri');
+	Route::patch('/admin/album/{id}/galeri/update', 'AlbumController@update_selected_galeri');
+	Route::patch('/admin/album/{id}/galeri/{id_galeri}/update', 'AlbumController@update_galeri');
+	Route::delete('/admin/album/{id}/galeri/{id_galeri}/delete', 'AlbumController@delete_galeri');
 
 	// Berita
 	Route::get('/admin/berita', 'BeritaController@index');
@@ -37,16 +61,33 @@ Route::middleware(['auth'])->group(function () {
 	Route::patch('/admin/berita/{id}/update', 'BeritaController@update');
 	Route::delete('/admin/berita/{id}/delete', 'BeritaController@delete');
 
+	// Halaman
+	Route::get('/admin/halaman', 'HalamanController@index');
+	Route::get('/admin/halaman/create', 'HalamanController@create');
+	Route::post('/admin/halaman/store', 'HalamanController@store');
+	Route::get('/admin/halaman/{id}', 'HalamanController@edit');
+	Route::patch('/admin/halaman/{id}/update', 'HalamanController@update');
+	Route::delete('/admin/halaman/{id}/delete', 'HalamanController@delete');
+
+	// Elfinder
+	Route::get('/elfinder/set_dir', function() {
+		\Config::set('elfinder.dir', 'a');
+		// config(['elfinder.dir', 1000]);
+        \Session::forget('dir');
+        \Session::put('dir', 'a');
+		return \Config::get('elfinder.dir');
+	});
+
 	Route::get('/elfinder/template/{param?}', function($param) {
-        Session::forget('dir');
-        Session::put('dir', ['uploads/format']);
-        $t = new \Barryvdh\Elfinder\ElfinderController(App::getInstance());
-        return $t->showPopup($param);
+        // Session::forget('dir');
+        Session::put('dir', ['uploads/aw']);
+        // $t = new \Barryvdh\Elfinder\ElfinderController(App::getInstance());
+        // return $t->showPopup($param);
     });
     
     Route::get('/elfinder/filemanager/{any?}', function($param) {
         Session::forget('dir');
-        Session::put('dir', ['uploads/info']);
+        Session::put('dir', ['uploads/aw']);
         $t = new \Barryvdh\Elfinder\ElfinderController(App::getInstance());
         return $t->showPopup($param);
     });

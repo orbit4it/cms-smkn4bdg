@@ -3,7 +3,7 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SMKN 4 BANDUNG</title>
+    <title>SMK Negeri 4 BANDUNG</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('') }}css/stylesheet.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('') }}css/style.css">
@@ -42,13 +42,9 @@
 							Info
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="{{ url('') }}">Sejarah</a>
-							<a class="dropdown-item" href="{{ url('') }}">Visi & Misi</a>
-							<a class="dropdown-item" href="{{ url('') }}">Data Pokok Sekolah</a>
-							<a class="dropdown-item" href="{{ url('') }}">Data Siswa</a>
-							<a class="dropdown-item" href="{{ url('') }}">Data Guru</a>
-							<a class="dropdown-item" href="{{ url('') }}">Fasilitas</a>
-							<a class="dropdown-item" href="{{ url('') }}">Virtual Tour</a>
+							@foreach (\App\Halaman::all() as $halaman)
+							<a class="dropdown-item" href="{{ url('info/' . $halaman->slug) }}">{{ str_replace('SMK Negeri 4 Bandung', '', $halaman->judul) }}</a>
+							@endforeach
 						</div>
                     </li>
                     <li class="nav-item dropdown">
@@ -56,16 +52,23 @@
 							Program Studi
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="{{ url('') }}">Teknik Komputer Jaringan</a>
-							<a class="dropdown-item" href="{{ url('') }}">Rekayasa Perangkat Lunak</a>
-							<a class="dropdown-item" href="{{ url('') }}">Multimedia</a>
-							<a class="dropdown-item" href="{{ url('') }}">TOI</a>
-							<a class="dropdown-item" href="{{ url('') }}">TITL</a>
-							<a class="dropdown-item" href="{{ url('') }}">Audio Video</a>
+							<a class="dropdown-item" href="{{ url('program-studi/tkj') }}">Teknik Komputer Jaringan</a>
+							<a class="dropdown-item" href="{{ url('program-studi/rpl') }}">Rekayasa Perangkat Lunak</a>
+							<a class="dropdown-item" href="{{ url('program-studi/mm') }}">Multimedia</a>
+							<a class="dropdown-item" href="{{ url('program-studi/toi') }}">TOI</a>
+							<a class="dropdown-item" href="{{ url('program-studi/titl') }}">TITL</a>
+							<a class="dropdown-item" href="{{ url('program-studi/av') }}">Audio Video</a>
 						</div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('') }}">Ekstrakurikuler</a>
+                    <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Ekstrakurikuler
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="{{ url('ekstrakurikuler/teknologi') }}">Teknologi</a>
+							<a class="dropdown-item" href="{{ url('ekstrakurikuler/seni') }}">Seni</a>
+							<a class="dropdown-item" href="{{ url('ekstrakurikuler/pmr') }}">PMR</a>
+						</div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="prestasi.smkn4bdg.sch.id">Prestasi</a>
@@ -120,34 +123,22 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
-	<script>
+	@stack('js')
+
+	<script type="text/javascript">
 		function myMap() {
-			var myCenter = new google.maps.LatLng(-6.9416583,107.6288947);
-			var mapCanvas = document.getElementById("googleMap");
-			var mapOptions = {center: myCenter, zoom: 17};
-			var map = new google.maps.Map(mapCanvas, mapOptions);
-			var marker = new google.maps.Marker({position:myCenter});
-			marker.setMap(map);
-		}
-
-		(function(){
-
-		  var parallax = document.querySelectorAll(".tentang"),
-		      speed = 0.2;
-
-		  window.onscroll = function(){
-		    [].slice.call(parallax).forEach(function(el,i){
-
-		      var windowYOffset = window.pageYOffset;
-			  var elBackgrounPos = "50% " + (windowYOffset * speed - 600) + "px";
-			  console.log(windowYOffset);
-			  console.log(elBackgrounPos);
-		      el.style.backgroundPosition = elBackgrounPos;
-
-		    });
-		  };
-
-		})();
+            var myCenter = new google.maps.LatLng(-6.9416583,107.6288947);
+            var mapCanvas = document.getElementById("googleMap");
+            var mapOptions = {
+            	center: myCenter, 
+            	zoom: 17
+            };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+            var marker = new google.maps.Marker({
+            	position:myCenter
+            });
+            marker.setMap(map);
+        }
 	</script>
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbJ83iOH3BNaVWtOjaKUikj9sx2OIHzfs&callback=myMap"></script>

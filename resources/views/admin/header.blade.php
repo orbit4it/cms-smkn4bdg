@@ -14,7 +14,7 @@
 	<!--Loading bootstrap css-->
 	<link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/css/fonts.css">
 	<link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/vendors/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css">
-  <link rel="stylesheet" href="{{ asset('') }}/css/font-awesome.min.css">
+  	<link rel="stylesheet" href="{{ asset('') }}/css/font-awesome.min.css">
 	<link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/vendors/bootstrap/css/bootstrap.min.css">
 	<!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
 	<link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/vendors/animate.css/animate.css">
@@ -39,8 +39,6 @@
   <link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/vendors/DataTables/media/css/dataTables.bootstrap.css">
   <link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/vendors/sweetalert/dist/sweetalert.css">
   <link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/vendors/sweetalert/themes/facebook/facebook.css">
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-    
 
     @stack('css')
 </head>

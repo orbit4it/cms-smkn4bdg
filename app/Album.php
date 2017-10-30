@@ -17,4 +17,9 @@ class Album extends Model
     ];
 
     public $timestamps = false;
+
+    public function galeri()
+    {
+        return $this->hasMany('App\Galeri', 'id_album', 'id_album');
+    }
 }

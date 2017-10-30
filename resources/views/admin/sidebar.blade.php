@@ -41,6 +41,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{url('admin/halaman')}}">
+                        <i class="fa fa-file-text-o fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Halaman</span>
+                    </a>
+                </li>
+                <li>
                     <a href="#">
                         <i class="fa fa-trophy fa-fw">
                             <div class="icon-bg bg-green"></div>

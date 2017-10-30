@@ -28,7 +28,7 @@
     			<div class="panel-heading">
     				Form Album
     			</div>
-				<form action="{{ @$album ? url('admin/album/' . $album->id_berita . '/update') : url('admin/album/store') }}" method="POST" enctype="multipart/form-data" class="form-album">
+				<form action="{{ @$album ? url('admin/album/' . $album->id_album . '/update') : url('admin/album/store') }}" method="POST" enctype="multipart/form-data" class="form-album">
 					{{ csrf_field() }}
 					@if (@$album)
 					{{ method_field('PATCH') }}
@@ -64,8 +64,8 @@
 
 @endpush
 @push('js')
-<script src="../../../vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-<script src="../../../vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+<script src="{{ asset('assets') }}/vendors/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="{{ asset('assets') }}/vendors/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 <script type="text/javascript">
 
 	$('textarea').ckeditor({

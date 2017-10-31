@@ -29,6 +29,34 @@ class KalenderController extends Controller
     	return redirect('admin/kalender')->with('success', 'Berhasil Menambah Data');
     }
 
+    public function edit($id)
+    {
+        return view('admin.kalender.kalender_form', [
+            'kalender' => \App\Kalender::find($id)
+        ]);
+    }
+
+    public function update($id='', Request $request)
+    {
+        $this->validate($request, $this->rules());
+        $input = $request->all();
+        $data = [
+            'judul' => $input['judul'],
+            'start' => \Carbon\Carbon::parse($input['start']),
+            'end' => \Carbon\Carbon::parse($input['end']),
+        ];
+        $kalender = \App\Kalender::find($id);
+        $kalender->update($data);
+        return redirect('admin/kalender')->with('success', 'Berhasil Mengubah Data');
+    }
+
+    public function delete($id='')
+    {
+        $kalender = \App\Kalender::find($id);
+        $kalender->delete();
+        return response()->json($kalender);
+    }
+
     public function rules()
     {
     	return [

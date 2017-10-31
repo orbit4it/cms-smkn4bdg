@@ -89,6 +89,9 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/admin/kalender', 'KalenderController@index');
 	Route::get('/admin/kalender/create', 'KalenderController@create');
 	Route::post('/admin/kalender/store', 'KalenderController@store');
+	Route::get('/admin/kalender/{id}', 'KalenderController@edit');
+	Route::patch('/admin/kalender/{id}/update', 'KalenderController@update');
+	Route::delete('/admin/kalender/{id}/delete', 'KalenderController@delete');
 
 	// Elfinder
 	Route::get('/elfinder/set_dir', function() {

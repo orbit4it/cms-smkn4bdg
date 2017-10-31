@@ -40,11 +40,11 @@
                         </div>
                         <div class="form-group">
                             <label>Mulai</label>
-                            <input type="text" name="start" class="form-control datepicker startDate" value="{{ old('start') ? old('start') : (@$kalender ? $kalender->start : '') }}">
+                            <input type="text" name="start" class="form-control datepicker startDate" value="{{ old('start') ? old('start') : (@$kalender ? $kalender->start->format('m/d/Y') : '') }}">
                         </div>
                         <div class="form-group">
                             <label>Selesai (Opsional)</label>
-                            <input type="text" name="end" class="form-control datepicker endDate" value="{{ old('end') ? old('end') : (@$kalender ? $kalender->end : '') }}">
+                            <input type="text" name="end" class="form-control datepicker endDate" value="{{ old('end') ? old('end') : (@$kalender ? $kalender->end->format('m/d/Y') : '') }}">
                         </div>
                     </div>
 					<div class="panel-footer text-right">

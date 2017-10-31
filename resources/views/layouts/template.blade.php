@@ -176,16 +176,13 @@
         	}
         }
 
-        var calendar = 0;
-
         $('#btn-calendar').on('click', function (e) {
+        	var right = $('.calendar-wrapper').css('right');
         	if ($(window).width() >= 768) {
-	        	if (calendar) {
+	        	if (right == '0px') {
 		        	$('.calendar-wrapper').css('right', '-650px');
-		        	calendar = 0;
 	        	} else {
 		        	$('.calendar-wrapper').css('right', 0);
-		        	calendar = 1;
 	        	}
         	} else {
         		$(location).attr('href', '{{ url('calendar') }}');

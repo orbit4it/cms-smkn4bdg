@@ -23,12 +23,20 @@ Route::get('/berita/{id}', 'BeritaController@show');
 
 // Program Studi
 Route::get('/program-studi/{id}', function($id='') {
-	return view('studi.' . $id);
+	$view = 'studi.' . $id;
+	if(view()->exists($view)){
+	    return view($view)->render();
+	}
+	return view('home.404');
 });
 
 // Ekstrakurikuler
-Route::get('/esktrakurikuler/{id}', function($id='') {
-	return view('ekskul.' . $id);
+Route::get('/ekstrakurikuler/{id}', function($id='') {
+	$view = 'ekskul.' . $id;
+	if(view()->exists($view)){
+	    return view($view)->render();
+	}
+	return view('home.404');
 });
 
 // Auth
@@ -69,10 +77,22 @@ Route::middleware(['auth'])->group(function () {
 	Route::patch('/admin/halaman/{id}/update', 'HalamanController@update');
 	Route::delete('/admin/halaman/{id}/delete', 'HalamanController@delete');
 
+	// Sponsor
+	Route::get('/admin/sponsor', 'SponsorController@index');
+	Route::get('/admin/sponsor/create', 'SponsorController@create');
+	Route::post('/admin/sponsor/store', 'SponsorController@store');
+	Route::get('/admin/sponsor/{id}', 'SponsorController@edit');
+	Route::patch('/admin/sponsor/{id}/update', 'SponsorController@update');
+	Route::delete('/admin/sponsor/{id}/delete', 'SponsorController@delete');
+
+	// Kalender
+	Route::get('/admin/kalender', 'KalenderController@index');
+	Route::get('/admin/kalender/create', 'KalenderController@create');
+	Route::post('/admin/kalender/store', 'KalenderController@store');
+
 	// Elfinder
 	Route::get('/elfinder/set_dir', function() {
-		\Config::set('elfinder.dir', 'a');
-		// config(['elfinder.dir', 1000]);
+		// \Config::set('elfinder.dir', 'a');
         \Session::forget('dir');
         \Session::put('dir', 'a');
 		return \Config::get('elfinder.dir');

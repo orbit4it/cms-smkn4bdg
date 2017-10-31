@@ -10,23 +10,33 @@
                 </ol>
             </nav>
             <div class="row">
-                @foreach (\App\Berita::orderBy('created_at', 'DESC')->get() as $berita)
-                <div class="col-12 col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="Card {{ asset('') }}/image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $berita->judul }}</h5>
-                            <p class="card-text">{{ $berita->created_at->format('d F Y') }}</p>
-                            @php
-                            $deskripsi = strip_tags($berita->deskripsi);
-                            $deskripsi = trim(str_replace('&nbsp;', '', $deskripsi));
-                            @endphp
-                            <p class="card-text">{{ substr($deskripsi, 0, 42) }}{{ strlen($deskripsi) > 42 ? '...' : '' }}</p>
-                            <a href="{{ url('berita/' . $berita->slug) }}" class="">Baca Selengkapnya</a>
+                @if ($data->count())
+                    @foreach ($data as $berita)
+                    <div class="col-12 col-md-4">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="Card {{ asset('') }}/image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $berita->judul }}</h5>
+                                <p class="card-text">{{ $berita->created_at->format('d F Y') }}</p>
+                                @php
+                                $deskripsi = strip_tags($berita->deskripsi);
+                                $deskripsi = trim(str_replace('&nbsp;', '', $deskripsi));
+                                @endphp
+                                <p class="card-text">{{ substr($deskripsi, 0, 42) }}{{ strlen($deskripsi) > 42 ? '...' : '' }}</p>
+                                <a href="{{ url('berita/' . $berita->slug) }}" class="">Baca Selengkapnya</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                @endforeach
+                    @endforeach
+                @else
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title my-3 py-3">Belum Ada Berita</h5>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </section>

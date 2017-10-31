@@ -1,5 +1,5 @@
 @extends('admin.header')
-@section('title', 'Berita')
+@section('title', 'Sponsor')
 @section('content')
 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
     <div class="page-header pull-left">
@@ -26,38 +26,25 @@
     	<div class="col-xs-12">
     		<div class="panel panel-default">
     			<div class="panel-heading">
-    				Form Berita
+    				Form Sponsor
     			</div>
-				<form action="{{ @$berita ? url('admin/berita/' . $berita->id_berita . '/update') : url('admin/berita/store') }}" method="POST" enctype="multipart/form-data" class="form-berita">
+				<form action="{{ @$sponsor ? url('admin/sponsor/' . $sponsor->id_sponsor . '/update') : url('admin/sponsor/store') }}" method="POST" enctype="multipart/form-data" class="form-sponsor">
 					{{ csrf_field() }}
-					@if (@$berita)
+					@if (@$sponsor)
 					{{ method_field('PATCH') }}
 					@endif
 					<div class="panel-body">
 						<div class="form-group">
-							<label>Judul</label>
-							<input type="text" name="judul" class="form-control" value="{{ old('judul') ? old('judul') : (@$berita ? $berita->judul : '') }}">
-						</div>
-						<div class="form-group">
-							<label>Deskripsi</label>
-							<textarea class="form-control" name="deskripsi" id="editor" rows="5">{{ old('deskripsi') ? old('deskripsi') : (@$berita ? $berita->deskripsi : '') }}</textarea>
+							<label>Nama</label>
+							<input type="text" name="nama" class="form-control" value="{{ old('nama') ? old('nama') : (@$sponsor ? $sponsor->nama : '') }}">
 						</div>
                         <div class="form-group">
-                            <label>Gambar Utama</label>
+                            <label>Logo</label>
                             <input type="file" name="foto">
-                        </div>
-                        <div class="form-group">
-                            <label>Kategori</label>
-                            <select name="id_kategori" class="form-control">
-                                <option>Pilih Kategori</option>
-                                @foreach (\App\Kategori::all() as $kategori)
-                                <option value="{{ $kategori->id_kategori }}" {{ old('id_kategori') == $kategori->id_kategori ? 'selected' : @$berita ? $berita->id_kategori == $kategori->id_kategori ? 'selected' : '' : ''}}>{{ $kategori->nama_kategori }}</option>
-                                @endforeach
-                            </select>
                         </div>
 					</div>
 					<div class="panel-footer text-right">
-						<a class="btn" href="{{ url('admin/berita') }}">Cancel</a>
+						<a class="btn" href="{{ url('admin/sponsor') }}">Cancel</a>
 						<button type="submit" class="btn btn-primary">Save changes</button>
 					</div>
 				</form>
@@ -90,6 +77,29 @@
             window.close();
         },
 	});
+
+	// function processClose(file) {
+ //        $(".modal-choose-file").modal('hide');
+ //    }
+    
+ //    function processSelectedFile(file) {
+ //        $(".filename").show().html('<i class="fa fa-paperclip"></i> ' + file);
+ //        $(".btnChooseFile").html("Ganti File");
+ //        $("[name=file]").val(file);
+ //    }
+    
+ //    $(function() {
+ //        @if(!empty($result))
+ //            $(".btnChooseFile").html("Ganti File");
+ //        @else
+ //            $('.filename').hide();
+ //        @endif
+        
+ //        $(".btnChooseFile").click(function() {
+ //            $(".modal-choose-file").modal('show');
+ //            $(".modal-body").html('<iframe src="{{ url('elfinder/template/file') }}"></iframe>');
+ //        });
+ //    });
 
 </script>
 

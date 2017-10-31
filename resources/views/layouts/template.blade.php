@@ -5,9 +5,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>SMK Negeri 4 BANDUNG</title>
     <link rel="stylesheet" type="text/css" href="{{ asset('') }}css/stylesheet.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ asset('') }}css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('') }}css/style.css">
-    <link rel="stylesheet" href="{{ asset('') }}css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('') }}css/font-awesome.min.css">
+    <link rel='stylesheet' type="text/css" href="{{ asset('') }}css/fullcalendar.min.css">
     <link rel="icon" type="text/css" href="{{ asset('') }}image/smkn4.png">
 
 @stack('css')
@@ -78,6 +79,13 @@
         </div>
     </nav>
 
+    <div class="calendar-wrapper">
+	    <div id="calendar-btn">
+	    	<a href="javascript:void(0)" class="btn btn-primary btn-lg" id="btn-calendar"><i class="fa fa-calendar"></i></a>
+	    </div>
+	    <div id='calendar'></div>
+    </div>
+
     @yield('content')
 
     <footer>
@@ -119,9 +127,11 @@
     	</div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ asset('') }}js/jquery-3.2.1.slim.min.js"></script>
+	<script type="text/javascript" src="{{ asset('') }}js/popper.min.js"></script>
+	<script type="text/javascript" src="{{ asset('') }}js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{{ asset('') }}js/moment.js"></script>
+	<script type="text/javascript" src="{{ asset('') }}js/fullcalendar.min.js"></script>
 
 	@stack('js')
 
@@ -130,7 +140,7 @@
             var myCenter = new google.maps.LatLng(-6.9416583,107.6288947);
             var mapCanvas = document.getElementById("googleMap");
             var mapOptions = {
-            	center: myCenter, 
+            	center: myCenter,
             	zoom: 17
             };
             var map = new google.maps.Map(mapCanvas, mapOptions);
@@ -139,6 +149,54 @@
             });
             marker.setMap(map);
         }
+
+        $('#calendar').fullCalendar({
+        	header: {
+				left: 'prev,next,today',
+				right: 'title',
+			},
+			buttonIcons: true,
+			eventLimit: true,
+			events: [
+				@foreach (\App\Kalender::all() as $kalender)
+				{
+					title: '{{ $kalender->judul }}',
+					start: '{{ $kalender->start->format('Y-m-d') }}',
+					@if ($kalender->end)
+					end: '{{ $kalender->end->format('Y-m-d') }}',
+					@endif
+				},
+				@endforeach
+			],
+        });
+
+        function checkWindowSize() {
+        	if ($(window).width() < 768) {
+	        	$('.calendar-wrapper').css('right', '-650px');
+        	}
+        }
+
+        var calendar = 0;
+
+        $('#btn-calendar').on('click', function (e) {
+        	if ($(window).width() >= 768) {
+	        	if (calendar) {
+		        	$('.calendar-wrapper').css('right', '-650px');
+		        	calendar = 0;
+	        	} else {
+		        	$('.calendar-wrapper').css('right', 0);
+		        	calendar = 1;
+	        	}
+        	} else {
+        		$(location).attr('href', '{{ url('calendar') }}');
+        	}
+        });
+
+	    checkWindowSize();
+
+        $(window).resize(function() {
+            checkWindowSize();
+        });
 	</script>
 
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbJ83iOH3BNaVWtOjaKUikj9sx2OIHzfs&callback=myMap"></script>

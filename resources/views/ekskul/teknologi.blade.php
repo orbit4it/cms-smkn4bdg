@@ -1,4 +1,5 @@
 @extends('layouts.template')
+@section('title', 'Teknologi')
 @section('content')
 
     <section class="halaman">
@@ -6,19 +7,17 @@
             <nav aria-label="breadcrumb" role="navigation">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Info</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $halaman->judul }}</li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Ekstrakurikuler</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
                 </ol>
             </nav>
             <div class="row">
                 <div class="col-md-8 col-12 mb-3">
                     <div class="card">
-                        @if ($halaman->foto)
-                        <img class="card-img-top" src="{{ asset('uploads/' . $halaman->foto) }}" alt="{{ $halaman->judul }}">
-                        @endif
+                        <img class="card-img-top" src="#" alt="Ini Gambar">
                         <div class="card-body">
-                            <h2 class="card-title">{{ $halaman->judul }}</h2>
-                            <p class="card-text">{!! $halaman->deskripsi !!}</p>
+                            <h2 class="card-title">Ini Halaman Ekskul</h2>
+                            <p>Ini Halaman Ekskul</p>
                         </div>
                     </div>
                 </div>
@@ -35,6 +34,10 @@
         body {
             padding-top: 86px;
             background-color: #f7f7f7;
+        }
+        .table thead th {
+            vertical-align: middle;
+            text-align: center;
         }
         .halaman {
             padding: 2em 0 4em;

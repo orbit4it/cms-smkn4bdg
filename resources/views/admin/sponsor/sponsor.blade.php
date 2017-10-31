@@ -1,5 +1,5 @@
 @extends('admin.header')
-@section('title', 'Halaman')
+@section('title', 'Sponsor')
 @section('content')
 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
     <div class="page-header pull-left">
@@ -20,34 +20,33 @@
 <div class="page-content">
 
     @include('admin.error')
-
 	<!-- BEGIN MAIN CONTENT -->
     <div class="row">
     	<div class="col-xs-12">
     		<div class="panel panel-default">
     			<div class="panel-heading">
-    				Data Halaman
+    				Data Sponsor
     			</div>
 				<div class="panel-body">
-					<p><a href="{{ url('admin/halaman/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Halaman</a></p>
+					<p><a href="{{ url('admin/sponsor/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Sponsor</a></p>
 			    	<table class="table table-bordered">
 			    		<thead>
 			    			<tr>
 				    			<th>No</th>
-				    			<th>Judul</th>
-				    			<th>Slug</th>
+				    			<th>Foto</th>
+				    			<th>Nama</th>
 				    			<th>Action</th>
 			    			</tr>
 			    		</thead>
 			    		<tbody>
-			    			@foreach (\App\Halaman::all() as $halaman)
+			    			@foreach (\App\Sponsor::all() as $sponsor)
 			    			<tr>
 			    				<td>{{ @$i ? $i += 1 : $i = 1 }}</td>
-			    				<td>{{ $halaman->judul }}</td>
-			    				<td>{{ $halaman->slug }}</td>
+			    				<td><img src="{{ url('uploads/' . $sponsor->foto) }}" width="200"></td>
+			    				<td>{{ $sponsor->nama }}</td>
 			    				<td>
-			    					<form action="{{ url('admin/halaman/' . $halaman->id_halaman . '/delete') }}" method="POST">
-				    					<a href="{{ url('admin/halaman/' . $halaman->id_halaman) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+			    					<form action="{{ url('admin/sponsor/' . $sponsor->id_sponsor . '/delete') }}" method="POST">
+				    					<a href="{{ url('admin/sponsor/' . $sponsor->id_sponsor) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
 				    					<button class="btn btn-danger btn-delete" type="submit"><i class="fa fa-trash"></i></button>
 			    					</form>
 			    				</td>

@@ -1,5 +1,5 @@
 @extends('admin.header')
-@section('title', 'Halaman')
+@section('title', 'Kalender')
 @section('content')
 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
     <div class="page-header pull-left">
@@ -26,28 +26,30 @@
     	<div class="col-xs-12">
     		<div class="panel panel-default">
     			<div class="panel-heading">
-    				Data Halaman
+    				Data Kalender
     			</div>
 				<div class="panel-body">
-					<p><a href="{{ url('admin/halaman/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Halaman</a></p>
+					<p><a href="{{ url('admin/kalender/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Kalender</a></p>
 			    	<table class="table table-bordered">
 			    		<thead>
 			    			<tr>
 				    			<th>No</th>
 				    			<th>Judul</th>
-				    			<th>Slug</th>
+				    			<th>Mulai</th>
+				    			<th>Selesai</th>
 				    			<th>Action</th>
 			    			</tr>
 			    		</thead>
 			    		<tbody>
-			    			@foreach (\App\Halaman::all() as $halaman)
+			    			@foreach (\App\Kalender::all() as $kalender)
 			    			<tr>
 			    				<td>{{ @$i ? $i += 1 : $i = 1 }}</td>
-			    				<td>{{ $halaman->judul }}</td>
-			    				<td>{{ $halaman->slug }}</td>
+			    				<td>{{ $kalender->judul }}</td>
+			    				<td>{{ $kalender->start->format('d F Y') }}</td>
+			    				<td>{{ $kalender->end->format('d F Y') }}</td>
 			    				<td>
-			    					<form action="{{ url('admin/halaman/' . $halaman->id_halaman . '/delete') }}" method="POST">
-				    					<a href="{{ url('admin/halaman/' . $halaman->id_halaman) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+			    					<form action="{{ url('admin/kalender/' . $kalender->id_kalender . '/delete') }}" method="POST">
+				    					<a href="{{ url('admin/kalender/' . $kalender->id_kalender) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
 				    					<button class="btn btn-danger btn-delete" type="submit"><i class="fa fa-trash"></i></button>
 			    					</form>
 			    				</td>

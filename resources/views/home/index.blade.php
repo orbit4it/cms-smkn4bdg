@@ -35,23 +35,29 @@
     			<a href="{{ url('berita') }}">Lihat Semua Berita</a>
     		</div>
     		<div class="row news-content">
-                @foreach ($data as $berita)
-    			<div class="col-12 col-md-4">
-    				<div class="card">
-						<img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="{{ $berita->judul }}">
-						<div class="card-body">
-							<h5 class="card-title">{{ $berita->judul }}</h5>
-							<p class="card-text">{{ @$berita->created_at->format('d F Y') }}</p>
-                            @php
-                            $deskripsi = strip_tags($berita->deskripsi);
-                            $deskripsi = trim(str_replace('&nbsp;', '', $deskripsi));
-                            @endphp
-							<p class="card-text">{{ substr($deskripsi, 0, 42) }}{{ strlen($deskripsi) > 42 ? '...' : '' }}</p>
-							<a href="{{ url('berita/' . $berita->slug) }}" class="">Baca Selengkapnya</a>
-						</div>
-					</div>
-    			</div>
-                @endforeach
+                @if ($data->count())
+                    @foreach ($data as $berita)
+        			<div class="col-12 col-md-4">
+        				<div class="card">
+    						<img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="{{ $berita->judul }}">
+    						<div class="card-body">
+    							<h5 class="card-title">{{ $berita->judul }}</h5>
+    							<p class="card-text">{{ @$berita->created_at->format('d F Y') }}</p>
+                                @php
+                                $deskripsi = strip_tags($berita->deskripsi);
+                                $deskripsi = trim(str_replace('&nbsp;', '', $deskripsi));
+                                @endphp
+    							<p class="card-text">{{ substr($deskripsi, 0, 42) }}{{ strlen($deskripsi) > 42 ? '...' : '' }}</p>
+    							<a href="{{ url('berita/' . $berita->slug) }}" class="">Baca Selengkapnya</a>
+    						</div>
+    					</div>
+        			</div>
+                    @endforeach
+                @else
+                    <div class="col-12 text-center">
+                        <p class="mx-auto py-3 my-3">Belum Ada Berita</p>
+                    </div>
+                @endif
     		</div>
     	</div>
     </section>
@@ -201,7 +207,7 @@
         </div>
     </section>
 
-    <section class="tentang parallax">
+    <section class="tentang">
     	<div class="container">
     		<div class="row title">
     			<h2 class="mx-auto"><b>Tentang</b> SMKN 4 BANDUNG</h2>
@@ -217,43 +223,48 @@
     	</div>
     </section>
 
+    @if ($sponsors->count())
     <section class="sponsor px-0 py-3">
         <div class="container">
             <div class="row">
-                <div class="col-6 col-md-2 text-center py-3 my-3">
-                    <img src="{{ asset('image/brand1.png') }}">
+                @foreach ($sponsors as $sponsor)
+                <div class="col-6 col-md-2 text-center py-3 my-3 mx-auto">
+                    <img src="{{ asset('uploads/' . $sponsor->foto) }}" alt="{{ $sponsor->judul }}" height="100">
                 </div>
-                <div class="col-6 col-md-2 text-center py-3 my-3">
-                    <img src="{{ asset('image/brand1.png') }}">
-                </div>
-                <div class="col-6 col-md-2 text-center py-3 my-3">
-                    <img src="{{ asset('image/brand1.png') }}">
-                </div>
-                <div class="col-6 col-md-2 text-center py-3 my-3">
-                    <img src="{{ asset('image/brand1.png') }}">
-                </div>
-                <div class="col-6 col-md-2 text-center py-3 my-3">
-                    <img src="{{ asset('image/brand1.png') }}">
-                </div>
-                <div class="col-6 col-md-2 text-center py-3 my-3">
-                    <img src="{{ asset('image/brand1.png') }}">
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
+    @endif
 @endsection
 
 @push('js')
     <script type="text/javascript">
-        var parallax = document.querySelectorAll(".parallax");
+        var parallax;
         var speed = 0.2;
 
-        window.onscroll = function(){
+        function checkMedia() {
+            if ($(window).width() >= 768) {
+                $('.tentang').addClass('parallax');
+            } else {
+                $('.tentang').removeClass('parallax');
+            }
+            parallax = document.querySelectorAll(".parallax");
+        }
+        
+        checkMedia();
+
+        window.onscroll = function() {
             [].slice.call(parallax).forEach(function(el,i) {
                 var windowYOffset = window.pageYOffset;
                 var elBackgrounPos = "50% " + (windowYOffset * speed - 850) + "px";
                 el.style.backgroundPosition = elBackgrounPos;
             });
         };
+
+        $(window).resize(function() {
+            checkMedia();
+        });
+
     </script>
 @endpush

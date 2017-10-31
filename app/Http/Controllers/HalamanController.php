@@ -36,12 +36,20 @@ class HalamanController extends Controller
             $request->file('foto')->storeAs('', $foto);
             $data['foto'] = $foto;
         }
+        $slug = str_replace('SMK Negeri 4 Bandung', '', $input['judul']);
+        $slug = str_slug($slug, '-');
+
+        $halaman = \App\Halaman::where('slug', $slug)->get();
+        if ($halaman->count()) {
+            $slug .= '-';
+            $slug .= $halaman->count() + 1;
+        }
 
     	$data = [
     		'judul' => $input['judul'],
     		'deskripsi' => $input['deskripsi'],
     		'foto' => $foto,
-    		'slug' => str_slug($input['judul'], '-'),
+    		'slug' => $slug,
     		'hits' => 0
     	];
 
@@ -79,6 +87,14 @@ class HalamanController extends Controller
     	$halaman = \App\Halaman::find($id);
     	$halaman->update($data);
     	return redirect('admin/halaman')->with('success', 'Berhasil Mengubah Halaman');
+    }
+
+    public function delete($id='')
+    {
+        $halaman = \App\Halaman::find($id);
+        \Storage::delete($halaman->foto);
+        $halaman->delete();
+        return response()->json($halaman);
     }
 
     public function rules()

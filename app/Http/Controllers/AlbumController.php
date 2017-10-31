@@ -11,7 +11,6 @@ class AlbumController extends Controller
 {
     public function index()
     {
-        // print_r(Session::get('dir'));
 		return view('admin.album.album');
     }
 
@@ -35,6 +34,12 @@ class AlbumController extends Controller
     	}
 
     	$slug = str_slug($input['judul'], '-');
+
+        $album = \App\Album::where('slug', $slug)->get();
+        if ($album->count()) {
+            $slug .= '-';
+            $slug .= $album->count() + 1;
+        }
 
     	$data = [
     		'judul' => $input['judul'],

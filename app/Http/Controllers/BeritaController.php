@@ -13,7 +13,9 @@ class BeritaController extends Controller
 
     public function show_all()
     {
-    	return view('berita.show_all');
+    	return view('berita.show_all', [
+    		'data' => \App\Berita::orderBy('created_at', 'DESC')->get()
+    	]);
     }
 
     public function show($slug='')
@@ -44,11 +46,19 @@ class BeritaController extends Controller
     		$data['foto'] = $foto;
     	}
 
+    	$slug = str_slug($input['judul'], '-');
+
+    	$berita = \App\Berita::where('slug', $slug)->get();
+    	if ($berita->count()) {
+    		$slug .= '-';
+    		$slug .= $berita->count() + 1;
+    	}
+
     	$data = [
     		'judul' => $input['judul'],
     		'deskripsi' => $input['deskripsi'],
     		'foto' => $foto,
-    		'slug' => str_slug($input['judul'], '-'),
+    		'slug' => $slug,
     		'id_kategori' => $input['id_kategori'],
     		'hits' => 0
     	];
@@ -92,7 +102,9 @@ class BeritaController extends Controller
 
     public function delete($id)
     {
-    	$berita = \App\Berita::find($id)->delete();
+    	$berita = \App\Berita::find($id);
+        \Storage::delete($berita->foto);
+        $berita->delete();
     	return response()->json($berita);
     }
 

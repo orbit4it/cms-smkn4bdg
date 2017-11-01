@@ -10,6 +10,14 @@ button:focus {
 	display: block;
 }
 
+.scroll-show {
+	transition: all .25s ease-out;
+}
+
+a.text-white {
+	text-decoration: none;
+}
+
 /* Navigation */
 .navbar {
 	box-shadow: 0px 2px 10px #333;
@@ -67,7 +75,7 @@ button:focus {
 	position: fixed;
 	z-index: 2;
 	right: -650px;
-	bottom: 0;
+	top: 130px;
 	transition: all .3s ease-out;
 }
 
@@ -92,269 +100,13 @@ button:focus {
 	border-radius: 0;
 }
 
-#calendar a.fc-event {
-	color: #fff !important;
-}
-
-/* Carousel */
-
-.carousel {
-	margin-top: 86px;
-	overflow: hidden;
-}
-
-.carousel-inner {
-	overflow: hidden;
-}
-
-.carousel img {
-	filter: brightness(80%);
-}
-
-.carousel-caption {
-	top: calc(100vh - 90px - 60px);
-	background-color: #3387bc;
-	left: 0;
-	right: 0;
-	text-align: right;
-	height: 80px;
-}
-
-@media (min-width: 768px) {
-	.carousel-inner {
-		height: 570px;
-	}
-	.carousel img {
-		height: 570px;
-	}
-	.carousel-caption {
-		top: calc(570px - 80px);
-	}
-}
-
-@media (min-width: 992px) {
-	.carousel-inner {
-		height: calc(100vh - 86px);
-	}
-	.carousel img {
-		width: 100%;
-		height: auto;
-	}
-	.carousel-caption {
-		top: calc(100vh - 90px - 60px);
-	}
-}
-
-@media (max-width: 575px) {
-	.carousel img {
-		margin-left: -50%;
-	}
-}
-
-@media (max-width: 767px) {
-	.carousel-caption {
-		top: calc(500px - 80px);
-	}
-}
-
-@media (max-width: 991px) {
-	.carousel {
-		margin-top: 46px;
-	}
-}
-
-.carousel-control-next, .carousel-control-prev {
-	width: 5%;
-}
-
-.carousel-indicators {
-	justify-content: left;
-	margin-left: 8%;
-}
-
-/* News */
-
-section {
-	padding: 5em 0;
-}
-
-.news .container {
-	padding-left : 30px;
-	padding-right: 30px;
-}
-
-.news .title {
-	padding: 10px 0;
-}
-
-.news-content {
-	margin-left: -30px;
-	margin-right: -30px;
-}
-
-.news .card,
-.news .card img {
-	border-radius: 0;
-}
-
-.news .card {
-	border: 0;
-	margin-bottom: 30px;
-}
-
-.news .card-body {
-	padding: 1.25rem 0;
-}
-
-/* Informasi */
-.informasi {
-	background-image: url("../image/smkn4-c.jpg");
+#calendar .fc-event {
 	color: #fff;
 }
 
-
-/* Keahlian */
-.keahlian {
-	background-color: #f1f1f1;
-}
-
-.keahlian .title {
-	padding: 10px 0;
-	margin-bottom: 40px;
-}
-
-.keahlian-item {
-	padding-bottom: 50px;
-}
-
-.keahlian-img {
-	width: 50%;
-}
-
-.keahlian-text h5 {
-	margin-top: 30px;
-}
-
-.keahlian-text p {
-	margin-top: 20px;
-	text-align: justify;
-	text-align-last: center;
-}
-
-/* Sambutan */
-
-.sambutan {
-	background-color: #4a9ed3;
+.fc-unthemed td.fc-today {
+	background-color: #27ae60 !important;
 	color: #fff;
-}
-
-.sambutan .title {
-	padding: 10px 0;
-	margin-bottom: 40px;
-}
-
-.sambutan-overlay {
-	overflow: hidden;
-	width:  220px;
-	height: 220px;
-	border-radius: 100%;
-}
-
-.sambutan-overlay img {
-	margin-top: -100px;
-	width: 100%;
-}
-
-.sambutan-content p {
-	text-align: justify;
-}
-
-/* Galeri */
-.galeri .title {
-	padding: 10px 0;
-}
-
-.galeri .nav-link {
-	margin: 0 .7rem;
-}
-
-.galeri .card {
-	border: 0;
-	height: 200px;
-	overflow: hidden;
-}
-
-@media (max-width: 767px) {
-	.galeri .card {
-		height: 130px;
-	}
-}
-
-@media (max-width: 991px) {
-	.galeri .card {
-		height: 170px;
-	}
-}
-
-.galeri .card,
-.galeri .card * {
-	border-radius: 0;
-}
-
-.galeri .card .card-img-overlay {
-	opacity: 0;
-	padding: 3rem 1.25rem 0;
-	margin-top: 100px;
-	transition: .2s ease-out;
-}
-
-.galeri .card:hover .card-img-overlay {
-	opacity: 1;
-	margin-top: 0;
-}
-
-.galeri .card .card-img {
-	filter: brightness(90%);
-	transition: .15s ease-out;
-}
-
-.galeri .card:hover .card-img {
-	filter: brightness(40%);
-}
-
-/* Tentang */
-.tentang {
-	background-image: url("../image/smkn4-c.jpg");
-	background-size: 450% auto;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	color: #fff;
-}
-
-@media (min-width: 576px) {
-	.tentang {
-		background-size: 200% auto;
-	}
-}
-
-@media (min-width: 768px) {
-	.tentang {
-		background-size: 140% auto;
-	}
-}
-
-.tentang .container {
-	padding-left : 30px;
-	padding-right: 30px;
-}
-
-.tentang .title {
-	padding: 10px 0;
-	margin-bottom: 40px;
-}
-
-.tentang p {
-	text-align: justify;
 }
 
 /* Top Footer */

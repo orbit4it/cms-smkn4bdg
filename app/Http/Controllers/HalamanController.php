@@ -11,10 +11,14 @@ class HalamanController extends Controller
     	return view('admin.halaman.halaman');
     }
 
-    public function show($id='')
+    public function show($slug='')
     {
+        $halaman = \App\Halaman::where('slug', $slug)->first();
+        $halaman->update([
+            'hits' => $halaman->hits += 1
+        ]);
         return view('halaman.index', [
-            'halaman' => \App\Halaman::where('slug', $id)->first()
+            'halaman' => $halaman
         ]);
     }
 

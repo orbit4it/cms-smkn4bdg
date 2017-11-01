@@ -72,7 +72,7 @@
 						</div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="prestasi.smkn4bdg.sch.id">Prestasi</a>
+                        <a class="nav-link" href="https://prestasi.smkn4bdg.sch.id/">Prestasi</a>
                     </li>
                 </ul>
             </div>
@@ -112,10 +112,7 @@
 		    			<ul class="footer-nav">
 							<li><a href="{{ url('') }}">Beranda</a></li>
 							<li><a href="{{ url('berita') }}">Berita</a></li>
-							<li><a href="{{ url('') }}">Ekstrakurikuler</a></li>
-							<li><a href="{{ url('') }}">Studi</a></li>
-							<li><a href="{{ url('') }}">Profil</a></li>
-							<li><a href="{{ url('') }}">Prestasi</a></li>
+							<li><a href="https://prestasi.smkn4bdg.sch.id/">Prestasi</a></li>
 						</ul>
 		    		</div>
 		    	</div>
@@ -127,12 +124,12 @@
     	</div>
     </footer>
 
-    <script type="text/javascript" src="{{ asset('') }}js/jquery-3.2.1.slim.min.js"></script>
+	<script type="text/javascript" src="{{ asset('') }}js/jquery.min.js"></script>
 	<script type="text/javascript" src="{{ asset('') }}js/popper.min.js"></script>
 	<script type="text/javascript" src="{{ asset('') }}js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="{{ asset('') }}js/moment.js"></script>
-	<script type="text/javascript" src="{{ asset('') }}js/fullcalendar.min.js"></script>
-
+	<script type="text/javascript" src="{{ asset('') }}js/fullcalendar/fullcalendar.min.js"></script>
+	<script type="text/javascript" src="{{ asset('') }}js/fullcalendar/id.js"></script>
 	@stack('js')
 
 	<script type="text/javascript">
@@ -153,8 +150,12 @@
         $('#calendar').fullCalendar({
         	header: {
 				left: 'prev,next,today',
-				right: 'title',
+				center: 'title',
+				right: 'month,listMonth',
 			},
+			locale: 'id',
+			aspectRatio: 1.6,
+			columnFormat: 'dddd',
 			buttonIcons: true,
 			eventLimit: true,
 			events: [
@@ -193,6 +194,20 @@
 
         $(window).resize(function() {
             checkWindowSize();
+        });
+
+        $(window).scroll(function() {
+        	var y = $(this).scrollTop();
+        	$('.scroll-show').each(function () {
+		        var t = $(this).parent().offset().top;
+		        if (y > t - 450) {
+		            $(this).css('opacity', 1);
+		            $(this).css('margin-top', 0);
+		        } else {
+		            $(this).css('opacity', 0);
+		            $(this).css('margin-top', '60px');
+		        }
+		    });
         });
 	</script>
 

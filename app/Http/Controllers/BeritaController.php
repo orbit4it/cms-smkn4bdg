@@ -20,8 +20,12 @@ class BeritaController extends Controller
 
     public function show($slug='')
     {
+        $berita = \App\Berita::where('slug', $slug)->first();
+        $berita->update([
+            'hits' => $berita->hits += 1
+        ]);
     	return view('berita.index', [
-    		'berita' => \App\Berita::where('slug', $slug)->first()
+    		'berita' => $berita
     	]);
     }
 

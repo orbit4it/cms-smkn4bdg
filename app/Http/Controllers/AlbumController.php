@@ -14,6 +14,17 @@ class AlbumController extends Controller
 		return view('admin.album.album');
     }
 
+    public function show($slug='')
+    {
+        $album = \App\Album::where('slug', $slug)->first();
+        $album->update([
+            'hits' => $album->hits += 1
+        ]);
+        return view('album.index', [
+            'album' => $album
+        ]);
+    }
+
     public function create()
     {
 		return view('admin.album.album_form');

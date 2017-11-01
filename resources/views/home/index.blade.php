@@ -1,7 +1,7 @@
 @extends('layouts.template')
 @section('content')
     <div id="slider" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
+        <ol class="carousel-indicators d-none d-lg-inline-flex">
             @for ($i = 0; $i < (count($data) < 3 ? count($data) : 3); $i++)
             <li data-target="#slider" data-slide-to="{{ $i }}" class="{{ $i == 0 ? 'active' : '' }}"></li>
             @endfor
@@ -11,44 +11,39 @@
             <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
                 <img class="d-block" src="{{ asset('uploads/' . $data[$i]->foto) }}" alt="{{ $data[$i]->judul }}">
                 <div class="carousel-caption text-center text-lg-right">
-                	<div class="container">
-						<h5>{{ $data[$i]->judul }}</h5>
-					</div>
-				</div>
+                    <div class="container">
+                        <a href="{{ url('berita/' . $data[$i]->slug) }}" class="text-white">
+                        <h5>{{ $data[$i]->judul }}</h5>
+                        </a>
+                    </div>
+                </div>
             </div>
             @endfor
         </div>
-        <a class="carousel-control-prev" href="#slider" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-        <a class="carousel-control-next" href="#slider" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
 		</a>
     </div>
 
     <section class="news">
     	<div class="container">
     		<div class="row title">
-    			<h5 class="mr-auto"><b>Berita</b> Terkini</h5>
-    			<a href="{{ url('berita') }}">Lihat Semua Berita</a>
+    			<h5 class="mr-auto scroll-show"><b>Berita</b> Terkini</h5>
+    			<a href="{{ url('berita') }}" class="scroll-show">Lihat Semua Berita</a>
     		</div>
     		<div class="row news-content">
                 @if ($data->count())
                     @foreach ($data as $berita)
         			<div class="col-12 col-md-4">
-        				<div class="card">
+        				<div class="card scroll-show">
     						<img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="{{ $berita->judul }}">
     						<div class="card-body">
     							<h5 class="card-title">{{ $berita->judul }}</h5>
-    							<p class="card-text">{{ @$berita->created_at->format('d F Y') }}</p>
                                 @php
                                 $deskripsi = strip_tags($berita->deskripsi);
                                 $deskripsi = trim(str_replace('&nbsp;', '', $deskripsi));
                                 @endphp
-    							<p class="card-text">{{ substr($deskripsi, 0, 42) }}{{ strlen($deskripsi) > 42 ? '...' : '' }}</p>
-    							<a href="{{ url('berita/' . $berita->slug) }}" class="">Baca Selengkapnya</a>
+                                <p class="card-text">{{ substr($deskripsi, 0, 42) }}{{ strlen($deskripsi) > 42 ? '...' : '' }}</p>
+    							<p class="card-text"><small class="text-muted">{{ @$berita->created_at->format('d F Y') }}</small></p>
+                                <a href="{{ url('berita/' . $berita->slug) }}" class="">Baca Selengkapnya</a>
     						</div>
     					</div>
         			</div>
@@ -65,8 +60,8 @@
     <section class="informasi">
         <div class="container">
             <div class="row title mx-0">
-                <h3 class="mr-auto">Informasi Data Siswa dan Sekolah</h3>
-                <a href="https://eschool.smkn4bdg.sch.id/" class="btn btn-primary btn-lg">Selengkapnya</a>
+                <h3 class="mr-auto scroll-show">Informasi Data Siswa dan Sekolah</h3>
+                <a href="https://eschool.smkn4bdg.sch.id/" class="btn btn-primary btn-lg scroll-show">Selengkapnya</a>
             </div>
         </div>
     </section>
@@ -74,9 +69,9 @@
     <section class="keahlian">
     	<div class="container">
     		<div class="row title">
-    			<h2 class="mx-auto"><b>Program</b> Studi</h2>
+    			<h2 class="mx-auto scroll-show"><b>Program</b> Studi</h2>
     		</div>
-    		<div class="row">
+    		<div class="row scroll-show">
     			<div class="col-6 col-md-4 text-center keahlian-item">
 					<img class="keahlian-img" src="{{ asset('') }}/image/lightning-icon.png" alt="Card {{ asset('') }}/image cap">
 					<div class="keahlian-text">
@@ -126,15 +121,15 @@
     <section class="sambutan">
     	<div class="container">
     		<div class="row title">
-    			<h2 class="mx-auto"><b>Sambutan</b> Kepala Sekolah</h2>
+    			<h2 class="mx-auto scroll-show"><b>Sambutan</b> Kepala Sekolah</h2>
     		</div>
     		<div class="row sambutan-content text-center text-lg-left">
-    			<div class="col-12 col-lg-3 offset-lg-1">
+    			<div class="col-12 col-lg-3 offset-lg-1 scroll-show">
 	    			<div class="sambutan-overlay mx-auto mb-3">
-		    			<img src="{{ asset('') }}/image/PakAsepTapip.jpg">
+		    			<img src="{{ asset('') }}/image/PakAsepTapip.jpg" alt="Dr. Asep Tapip Yani, M.Pd">
 	    			</div>
     			</div>
-    			<div class="col-12 col-lg-7">
+    			<div class="col-12 col-lg-7 scroll-show">
     				<h3 class="mb-3">Dr. Asep Tapip Yani, M.Pd</h3>
 	    			<p>Sampurasun, SMKN 4 BANDUNG adalah Sekolah Menengah Kejuruan yang memiliki kelompok bidang keahlian Ketenaga Listrikan, Audio Video, dan Teknik Komputer dan Informatika. Keberadaannya didukung oleh dunia usaha dan dunia industri, baik dalam pembelajaran maupun penyerapan lulusannya. Pembelajaran teori dan praktek tidak hanya dilakukan di dalam kelas tetapi dilakukan di dunia industri melalui praktek kerja industri di perusahaan-perusahaan yang relevan.
 
@@ -149,16 +144,16 @@
     <section class="galeri">
         <div class="container">
             <div class="row title">
-                <h2 class="mx-auto"><b>Galeri</b> SMKN 4 BANDUNG</h2>
+                <h2 class="mx-auto scroll-show"><b>Galeri</b> SMKN 4 BANDUNG</h2>
             </div>
             <div class="row">
                 <ul class="nav nav-pills mx-auto my-3" id="albumTab" role="tablist">
                     <li class="nav-item">
-                        <a href="#semua" class="nav-link active" id="semua-tab" data-toggle="tab" href="#semua" role="tab" aria-controls="semua" aria-selected="true">Semua</a>
+                        <a href="#semua" class="nav-link active scroll-show" id="semua-tab" data-toggle="tab" href="#semua" role="tab" aria-controls="semua" aria-selected="true">Semua</a>
                     </li>
                     @foreach (\App\Album::all() as $album)
                     <li class="nav-item">
-                        <a href="#{{ $album->judul }}" class="nav-link" id="{{ $album->judul }}-tab" data-toggle="tab" href="#{{ $album->judul }}" role="tab" aria-controls="{{ $album->judul }}" aria-selected="true">{{ $album->judul }}</a>
+                        <a href="#{{ $album->judul }}" class="nav-link scroll-show" id="{{ $album->judul }}-tab" data-toggle="tab" href="#{{ $album->judul }}" role="tab" aria-controls="{{ $album->judul }}" aria-selected="true">{{ $album->judul }}</a>
                     </li>
                     @endforeach
                 </ul>
@@ -167,38 +162,40 @@
         <div class="container-fluid">
             <div class="tab-content" id="albumTabContent">
                 <div class=" tab-pane fade show active" id="semua" role="tabpanel" aria-labelledby="semua-tab">
-                    <div class="row content">
-                        @foreach (\App\Galeri::inRandomOrder()->take(6)->get() as $galeri)
-                        <div class="col-6 col-md-4 my-3">
-                            <div class="card bg-dark text-white ">
+                    <div class="row mx-0 content">
+                        <div class="card-columns my-3">
+                            @foreach (\App\Galeri::inRandomOrder()->take(6)->get() as $galeri)
+                            <div class="card bg-dark text-white scroll-show">
                                 <img class="card-img" src="{{ url('uploads' . $galeri->foto) }}" alt="Card image">
                                 <div class="card-img-overlay text-center">
                                     <h4 class="card-title">{{ $galeri->judul }}</h4>
                                     <p class="card-text">{{ $galeri->deskripsi }}</p>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
-                        @endforeach
                     </div>
                 </div>
                 @foreach (\App\Album::all() as $album)
                 <div class=" tab-pane fade show" id="{{ $album->judul }}" role="tabpanel" aria-labelledby="{{ $album->judul }}-tab">
-                    <div class="row content">
-                        @foreach ($galeriAlbum = \App\Galeri::where('id_album', $album->id_album)->inRandomOrder()->take(6)->get() as $galeri)
-                        <div class="col-6 col-md-4 my-3">
-                            <div class="card bg-dark text-white ">
+                    <div class="row mx-0 content">
+                        <div class="card-columns my-3 text-center">
+                            @foreach ($galeriAlbum = \App\Galeri::where('id_album', $album->id_album)->inRandomOrder()->take(6)->get() as $galeri)
+                            <div class="card bg-dark text-white scroll-show">
                                 <img class="card-img" src="{{ url('uploads' . $galeri->foto) }}" alt="Card image">
                                 <div class="card-img-overlay text-center">
                                     <h4 class="card-title">{{ $galeri->judul }}</h4>
                                     <p class="card-text">{{ $galeri->deskripsi }}</p>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
-                        @endforeach
+                    </div>
+                    <div class="row">
                         @if (!$galeriAlbum->count())
                         <p class="mx-auto my-3 py-3">Belum ada foto pada Album ini</p>
                         @else
-                        <a href="{{ url($album->slug) }}" class="mx-auto my-3">Lihat Album Sepenuhnya</a>
+                        <a href="{{ url('album/' . $album->slug) }}" class="mx-auto my-3">Lihat Album Sepenuhnya</a>
                         @endif
                     </div>
                 </div>
@@ -210,9 +207,9 @@
     <section class="tentang">
     	<div class="container">
     		<div class="row title">
-    			<h2 class="mx-auto"><b>Tentang</b> SMKN 4 BANDUNG</h2>
+    			<h2 class="mx-auto scroll-show"><b>Tentang</b> SMKN 4 BANDUNG</h2>
     		</div>
-    		<div class="row text">
+    		<div class="row text scroll-show">
     			<p>
     				SMKN 4 BANDUNG adalah Sekolah Menengah Kejuruan yang memiliki kelompok bidang keahlian Ketenaga Listrikan, Audio Video, dan Teknik Komputer dan Informatika. Keberadaannya didukung oleh dunia usaha dan dunia industri, baik dalam pembelajaran maupun penyerapan lulusannya. Pembelajaran teori dan praktek tidak hanya dilakukan di dalam kelas tetapi dilakukan di dunia industri melalui praktek kerja industri di perusahaan-perusahaan yang relevan.
     				<br>
@@ -228,7 +225,7 @@
         <div class="container">
             <div class="row">
                 @foreach ($sponsors as $sponsor)
-                <div class="col-6 col-md-2 text-center py-3 my-3 mx-auto">
+                <div class="col-6 col-md-2 text-center py-3 my-3 mx-auto scroll-show">
                     <img src="{{ asset('uploads/' . $sponsor->foto) }}" alt="{{ $sponsor->judul }}" height="100">
                 </div>
                 @endforeach
@@ -238,6 +235,270 @@
     @endif
 @endsection
 
+@push('css')
+<style type="text/css">
+    /* Carousel */
+    .carousel {
+        margin-top: 86px;
+        overflow: hidden;
+    }
+
+    .carousel-inner {
+        overflow: hidden;
+    }
+
+    .carousel img {
+        filter: brightness(80%);
+    }
+
+    .carousel-caption {
+        top: calc(100vh - 90px - 60px);
+        background-color: #3387bc;
+        left: 0;
+        right: 0;
+        text-align: right;
+        height: 80px;
+    }
+
+    .carousel-indicators li {
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;        
+    }
+
+    @media (min-width: 768px) {
+        .carousel-inner {
+            height: 570px;
+        }
+        .carousel img {
+            height: 570px;
+        }
+        .carousel-caption {
+            top: calc(570px - 80px);
+        }
+    }
+
+    @media (min-width: 992px) {
+        .carousel-inner {
+            height: calc(100vh - 86px);
+        }
+        .carousel img {
+            width: 100%;
+            height: auto;
+        }
+        .carousel-caption {
+            top: calc(100vh - 90px - 60px);
+        }
+    }
+
+    @media (max-width: 575px) {
+        .carousel img {
+            margin-left: -50%;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .carousel-caption {
+            top: calc(500px - 80px);
+        }
+    }
+
+    @media (max-width: 991px) {
+        .carousel {
+            margin-top: 46px;
+        }
+    }
+
+    .carousel-control-next, .carousel-control-prev {
+        width: 5%;
+    }
+
+    .carousel-indicators {
+        justify-content: left;
+        margin-left: 8%;
+    }
+
+    /* News */
+
+    section {
+        padding: 5em 0;
+    }
+
+    .news .container {
+        padding-left : 30px;
+        padding-right: 30px;
+    }
+
+    .news .title {
+        padding: 10px 0;
+    }
+
+    .news-content {
+        margin-left: -30px;
+        margin-right: -30px;
+    }
+
+    .news .card,
+    .news .card img {
+        border-radius: 0;
+    }
+
+    .news .card {
+        border: 0;
+        margin-bottom: 30px;
+    }
+
+    .news .card-body {
+        padding: 1.25rem 0;
+    }
+
+    /* Informasi */
+    .informasi {
+        background-image: url("{{ url('') }}/image/smkn4-c.jpg");
+        color: #fff;
+    }
+
+
+    /* Keahlian */
+    .keahlian {
+        background-color: #f1f1f1;
+    }
+
+    .keahlian .title {
+        padding: 10px 0;
+        margin-bottom: 40px;
+    }
+
+    .keahlian-item {
+        padding-bottom: 50px;
+    }
+
+    .keahlian-img {
+        width: 50%;
+    }
+
+    .keahlian-text h5 {
+        margin-top: 30px;
+    }
+
+    .keahlian-text p {
+        margin-top: 20px;
+        text-align: justify;
+        text-align-last: center;
+    }
+
+    /* Sambutan */
+
+    .sambutan {
+        background-color: #4a9ed3;
+        color: #fff;
+    }
+
+    .sambutan .title {
+        padding: 10px 0;
+        margin-bottom: 40px;
+    }
+
+    .sambutan-overlay {
+        overflow: hidden;
+        width:  220px;
+        height: 220px;
+        border-radius: 100%;
+    }
+
+    .sambutan-overlay img {
+        margin-top: -100px;
+        width: 100%;
+    }
+
+    .sambutan-content p {
+        text-align: justify;
+    }
+
+    /* Galeri */
+    .galeri .title {
+        padding: 10px 0;
+    }
+
+    .galeri .nav-link {
+        margin: 0 .7rem;
+    }
+
+    .galeri .card {
+        border: 0;
+    }
+
+    @media (max-width: 767px) {
+        .galeri .card {
+        }
+    }
+
+    @media (max-width: 991px) {
+        .galeri .card {
+        }
+    }
+
+    .galeri .card,
+    .galeri .card * {
+        border-radius: 0;
+    }
+
+    .galeri .card .card-img-overlay {
+        opacity: 0;
+        margin-top: 200px;
+        transition: .2s ease-out;
+    }
+
+    .galeri .card:hover .card-img-overlay {
+        opacity: 1;
+        margin-top: 50px;
+    }
+
+    .galeri .card .card-img {
+        filter: brightness(90%);
+        transition: .15s ease-out;
+    }
+
+    .galeri .card:hover .card-img {
+        filter: brightness(40%);
+    }
+
+    /* Tentang */
+    .tentang {
+        background-image: url("{{ url('') }}/image/smkn4-c.jpg");
+        background-size: 450% auto;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        color: #fff;
+    }
+
+    @media (min-width: 576px) {
+        .tentang {
+            background-size: 200% auto;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .tentang {
+            background-size: 140% auto;
+        }
+    }
+
+    .tentang .container {
+        padding-left : 30px;
+        padding-right: 30px;
+    }
+
+    .tentang .title {
+        padding: 10px 0;
+        margin-bottom: 40px;
+    }
+
+    .tentang p {
+        text-align: justify;
+    }
+</style>
+@endpush
 @push('js')
     <script type="text/javascript">
         var parallax;

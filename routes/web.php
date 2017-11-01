@@ -30,6 +30,9 @@ Route::get('/program-studi/{id}', function($id='') {
 	return view('home.404');
 });
 
+// Album
+Route::get('/album/{id}', 'AlbumController@show');
+
 // Ekstrakurikuler
 Route::get('/ekstrakurikuler/{id}', function($id='') {
 	$view = 'ekskul.' . $id;

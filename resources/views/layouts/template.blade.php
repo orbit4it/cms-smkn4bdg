@@ -22,7 +22,7 @@
             <a class="navbar-brand" href="{{ url('') }}">
             	<div class="row">
 	            	<div class="col p-0">
-			        	<img src="{{ asset('') }}image/smkn4.png" class="d-inline-block align-middle mr-3" alt="">
+			        	<img src="{{ asset('') }}image/smkn4.png" class="d-inline-block align-middle mr-3" alt="Logo SMKN 4">
 	            	</div>
 	            	<div class="col px-0 pt-2">
 			        	<span>SMKN 4 BANDUNG</span><br>
@@ -149,9 +149,8 @@
 
         $('#calendar').fullCalendar({
         	header: {
-				left: 'prev,next,today',
-				center: 'title',
-				right: 'month,listMonth',
+				left: 'title',
+				right: 'prev,next',
 			},
 			locale: 'id',
 			aspectRatio: 1.6,

@@ -153,7 +153,7 @@
                     </li>
                     @foreach (\App\Album::all() as $album)
                     <li class="nav-item">
-                        <a href="#{{ $album->judul }}" class="nav-link scroll-show" id="{{ $album->judul }}-tab" data-toggle="tab" href="#{{ $album->judul }}" role="tab" aria-controls="{{ $album->judul }}" aria-selected="true">{{ $album->judul }}</a>
+                        <a href="#{{ $album->slug }}" class="nav-link scroll-show" id="{{ $album->slug }}-tab" data-toggle="tab" href="#{{ $album->slug }}" role="tab" aria-controls="{{ $album->slug }}" aria-selected="true">{{ $album->judul }}</a>
                     </li>
                     @endforeach
                 </ul>
@@ -177,7 +177,7 @@
                     </div>
                 </div>
                 @foreach (\App\Album::all() as $album)
-                <div class=" tab-pane fade show" id="{{ $album->judul }}" role="tabpanel" aria-labelledby="{{ $album->judul }}-tab">
+                <div class=" tab-pane fade show" id="{{ $album->slug }}" role="tabpanel" aria-labelledby="{{ $album->slug }}-tab">
                     <div class="row mx-0 content">
                         <div class="card-columns my-3 text-center">
                             @foreach ($galeriAlbum = \App\Galeri::where('id_album', $album->id_album)->inRandomOrder()->take(6)->get() as $galeri)

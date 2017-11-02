@@ -73,42 +73,42 @@
     		</div>
     		<div class="row scroll-show">
     			<div class="col-6 col-md-4 text-center keahlian-item">
-					<img class="keahlian-img" src="{{ asset('') }}/image/lightning-icon.png" alt="Card {{ asset('') }}/image cap">
+					<img class="keahlian-img" src="{{ asset('') }}/image/icon-tkj.png" alt="Card {{ asset('') }}/image cap">
 					<div class="keahlian-text">
 						<h5 class="keahlian-title"><b>TEKNIK KOMPUTER JARINGAN</b></h5>
 						<a href="{{ url('program-studi/tkj') }}">Baca Selengkapnya</a>
 					</div>
     			</div>
     			<div class="col-6 col-md-4 text-center keahlian-item">
-					<img class="keahlian-img" src="{{ asset('') }}/image/lightning-icon.png" alt="Card {{ asset('') }}/image cap">
+					<img class="keahlian-img" src="{{ asset('') }}/image/icon-rpl.png" alt="Card {{ asset('') }}/image cap">
 					<div class="keahlian-text">
 						<h5 class="keahlian-title"><b>REKAYASA PERANGKAT LUNAK</b></h5>
 						<a href="{{ url('program-studi/rpl') }}">Baca Selengkapnya</a>
 					</div>
     			</div>
     			<div class="col-6 col-md-4 text-center keahlian-item">
-					<img class="keahlian-img" src="{{ asset('') }}/image/lightning-icon.png" alt="Card {{ asset('') }}/image cap">
+					<img class="keahlian-img" src="{{ asset('') }}/image/icon-mm.png" alt="Card {{ asset('') }}/image cap">
 					<div class="keahlian-text">
 						<h5 class="keahlian-title"><b>MULTIMEDIA</b></h5>
 						<a href="{{ url('program-studi/mm') }}">Baca Selengkapnya</a>
 					</div>
     			</div>
     			<div class="col-6 col-md-4 text-center keahlian-item">
-					<img class="keahlian-img" src="{{ asset('') }}/image/lightning-icon.png" alt="Card {{ asset('') }}/image cap">
+					<img class="keahlian-img" src="{{ asset('') }}/image/icon-toi.png" alt="Card {{ asset('') }}/image cap">
 					<div class="keahlian-text">
 						<h5 class="keahlian-title"><b>TEKNIK OTOMASI INDSUTRI</b></h5>
 						<a href="{{ url('program-studi/toi') }}">Baca Selengkapnya</a>
 					</div>
     			</div>
     			<div class="col-6 col-md-4 text-center keahlian-item">
-					<img class="keahlian-img" src="{{ asset('') }}/image/lightning-icon.png" alt="Card {{ asset('') }}/image cap">
+					<img class="keahlian-img" src="{{ asset('') }}/image/icon-titl.png" alt="Card {{ asset('') }}/image cap">
 					<div class="keahlian-text">
 						<h5 class="keahlian-title"><b>TEKNIK INSTALASI TENAGA LISTRIK</b></h5>
 						<a href="{{ url('program-studi/titl') }}">Baca Selengkapnya</a>
 					</div>
     			</div>
     			<div class="col-6 col-md-4 text-center keahlian-item">
-					<img class="keahlian-img" src="{{ asset('') }}/image/lightning-icon.png" alt="Card {{ asset('') }}/image cap">
+					<img class="keahlian-img" src="{{ asset('') }}/image/icon-av.png" alt="Card {{ asset('') }}/image cap">
 					<div class="keahlian-text">
 						<h5 class="keahlian-title"><b>AUDIO VIDEO</b></h5>
 						<a href="{{ url('program-studi/av') }}">Baca Selengkapnya</a>

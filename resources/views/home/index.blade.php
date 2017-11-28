@@ -42,7 +42,7 @@
                                 $deskripsi = trim(str_replace('&nbsp;', '', $deskripsi));
                                 @endphp
                                 <p class="card-text">{{ substr($deskripsi, 0, 42) }}{{ strlen($deskripsi) > 42 ? '...' : '' }}</p>
-    							<p class="card-text"><small class="text-muted">{{ @$berita->created_at->format('d F Y') }}</small></p>
+    							<p class="card-text"><small class="text-muted">{{ empty($berita->created_at) ? '' : $berita->created_at->format('d F Y') }}</small></p>
                                 <a href="{{ url('berita/' . $berita->slug) }}" class="">Baca Selengkapnya</a>
     						</div>
     					</div>

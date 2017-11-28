@@ -48,53 +48,57 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 // Admin
 Route::middleware(['auth'])->group(function () {
-	Route::get('/admin', 'AdminController@index');
 
-	// Album & Galeri
-	Route::get('/admin/album', 'AlbumController@index');
-	Route::get('/admin/album/create', 'AlbumController@create');
-	Route::post('/admin/album/store', 'AlbumController@store');
-	Route::get('/admin/album/{id}', 'AlbumController@edit');
-	Route::patch('/admin/album/{id}/update', 'AlbumController@update');
-	Route::delete('/admin/album/{id}/delete', 'AlbumController@delete');
-	Route::get('/admin/album/{id}/galeri', 'AlbumController@galeri');
-	Route::post('/admin/album/{id}/store', 'AlbumController@store_galeri');
-	Route::get('/admin/album/{id}/galeri/{id_galeri}', 'AlbumController@edit_galeri');
-	Route::patch('/admin/album/{id}/galeri/update', 'AlbumController@update_selected_galeri');
-	Route::patch('/admin/album/{id}/galeri/{id_galeri}/update', 'AlbumController@update_galeri');
-	Route::delete('/admin/album/{id}/galeri/{id_galeri}/delete', 'AlbumController@delete_galeri');
+	Route::prefix('admin')->group(function () {
 
-	// Berita
-	Route::get('/admin/berita', 'BeritaController@index');
-	Route::get('/admin/berita/create', 'BeritaController@create');
-	Route::post('/admin/berita/store', 'BeritaController@store');
-	Route::get('/admin/berita/{id}', 'BeritaController@edit');
-	Route::patch('/admin/berita/{id}/update', 'BeritaController@update');
-	Route::delete('/admin/berita/{id}/delete', 'BeritaController@delete');
+		Route::get('/', 'AdminController@index');
 
-	// Halaman
-	Route::get('/admin/halaman', 'HalamanController@index');
-	Route::get('/admin/halaman/create', 'HalamanController@create');
-	Route::post('/admin/halaman/store', 'HalamanController@store');
-	Route::get('/admin/halaman/{id}', 'HalamanController@edit');
-	Route::patch('/admin/halaman/{id}/update', 'HalamanController@update');
-	Route::delete('/admin/halaman/{id}/delete', 'HalamanController@delete');
+		// Album & Galeri
+		Route::get('/album', 'AlbumController@index');
+		Route::get('/album/create', 'AlbumController@create');
+		Route::post('/album/store', 'AlbumController@store');
+		Route::get('/album/{id}', 'AlbumController@edit');
+		Route::patch('/album/{id}/update', 'AlbumController@update');
+		Route::delete('/album/{id}/delete', 'AlbumController@delete');
+		Route::get('/album/{id}/galeri', 'AlbumController@galeri');
+		Route::post('/album/{id}/store', 'AlbumController@store_galeri');
+		Route::get('/album/{id}/galeri/{id_galeri}', 'AlbumController@edit_galeri');
+		Route::patch('/album/{id}/galeri/update', 'AlbumController@update_selected_galeri');
+		Route::patch('/album/{id}/galeri/{id_galeri}/update', 'AlbumController@update_galeri');
+		Route::delete('/album/{id}/galeri/{id_galeri}/delete', 'AlbumController@delete_galeri');
 
-	// Sponsor
-	Route::get('/admin/sponsor', 'SponsorController@index');
-	Route::get('/admin/sponsor/create', 'SponsorController@create');
-	Route::post('/admin/sponsor/store', 'SponsorController@store');
-	Route::get('/admin/sponsor/{id}', 'SponsorController@edit');
-	Route::patch('/admin/sponsor/{id}/update', 'SponsorController@update');
-	Route::delete('/admin/sponsor/{id}/delete', 'SponsorController@delete');
+		// Berita
+		Route::get('/berita', 'BeritaController@index');
+		Route::get('/berita/create', 'BeritaController@create');
+		Route::post('/berita/store', 'BeritaController@store');
+		Route::get('/berita/{id}', 'BeritaController@edit');
+		Route::patch('/berita/{id}/update', 'BeritaController@update');
+		Route::delete('/berita/{id}/delete', 'BeritaController@delete');
 
-	// Kalender
-	Route::get('/admin/kalender', 'KalenderController@index');
-	Route::get('/admin/kalender/create', 'KalenderController@create');
-	Route::post('/admin/kalender/store', 'KalenderController@store');
-	Route::get('/admin/kalender/{id}', 'KalenderController@edit');
-	Route::patch('/admin/kalender/{id}/update', 'KalenderController@update');
-	Route::delete('/admin/kalender/{id}/delete', 'KalenderController@delete');
+		// Halaman
+		Route::get('/halaman', 'HalamanController@index');
+		Route::get('/halaman/create', 'HalamanController@create');
+		Route::post('/halaman/store', 'HalamanController@store');
+		Route::get('/halaman/{id}', 'HalamanController@edit');
+		Route::patch('/halaman/{id}/update', 'HalamanController@update');
+		Route::delete('/halaman/{id}/delete', 'HalamanController@delete');
+
+		// Sponsor
+		Route::get('/sponsor', 'SponsorController@index');
+		Route::get('/sponsor/create', 'SponsorController@create');
+		Route::post('/sponsor/store', 'SponsorController@store');
+		Route::get('/sponsor/{id}', 'SponsorController@edit');
+		Route::patch('/sponsor/{id}/update', 'SponsorController@update');
+		Route::delete('/sponsor/{id}/delete', 'SponsorController@delete');
+
+		// Kalender
+		Route::get('/kalender', 'KalenderController@index');
+		Route::get('/kalender/create', 'KalenderController@create');
+		Route::post('/kalender/store', 'KalenderController@store');
+		Route::get('/kalender/{id}', 'KalenderController@edit');
+		Route::patch('/kalender/{id}/update', 'KalenderController@update');
+		Route::delete('/kalender/{id}/delete', 'KalenderController@delete');
+	});
 
 	// Elfinder
 	Route::get('/elfinder/set_dir', function() {

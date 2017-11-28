@@ -117,7 +117,7 @@ class BeritaController extends Controller
     	return [
     		'judul' => 'required|max:150',
     		'deskripsi' => 'required',
-    		'foto' => 'mimes:jpeg,png|max:10000',
+    		'foto' => 'mimes:jpeg,png|max:999999999999999999',
     		'id_kategori' => 'required|exists:kategori'
     	];
     }

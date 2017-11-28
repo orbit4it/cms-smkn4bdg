@@ -292,9 +292,13 @@
     }
 
     @media (max-width: 575px) {
-        .carousel img {
-            margin-left: -50%;
-        }
+        /*.carousel img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-width: 100%;
+            height: 100%;
+        }*/
     }
 
     @media (max-width: 767px) {
@@ -469,10 +473,10 @@
     /* Tentang */
     .tentang {
         background-image: url("{{ url('') }}/image/smkn4-c.jpg");
-        background-size: 450% auto;
         background-attachment: fixed;
         background-repeat: no-repeat;
         color: #fff;
+        background-position-x: center;
     }
 
     @media (min-width: 576px) {

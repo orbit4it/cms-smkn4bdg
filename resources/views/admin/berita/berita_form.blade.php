@@ -51,7 +51,7 @@
                             <select name="id_kategori" class="form-control">
                                 <option>Pilih Kategori</option>
                                 @foreach (\App\Kategori::all() as $kategori)
-                                <option value="{{ $kategori->id_kategori }}" {{ old('id_kategori') == $kategori->id_kategori ? 'selected' : @$berita ? $berita->id_kategori == $kategori->id_kategori ? 'selected' : '' : ''}}>{{ $kategori->nama_kategori }}</option>
+                                <option value="{{ $kategori->id_kategori }}" {{ old('id_kategori') == $kategori->id_kategori ? 'selected' : @$berita->id_kategori == $kategori->id_kategori ? 'selected' : ''}}>{{ $kategori->nama_kategori }}</option>
                                 @endforeach
                             </select>
                         </div>

@@ -108,7 +108,7 @@
 		    			<a href="https://twitter.com/smkn4bdg"><i class="fa fa-twitter fa-lg"></i></a>
 		    			<a href="https://www.facebook.com/smkn4bandung/"><i class="fa fa-facebook fa-lg"></i></a>
 		    		</div>
-		    		<div class="col-12 col-sm-6 col-lg-4">
+		    		<div class="col-12 col-sm-6 col-lg-4 text-center text-sm-right text-md-left">
 		    			<ul class="footer-nav">
 							<li><a href="{{ url('') }}">Beranda</a></li>
 							<li><a href="{{ url('berita') }}">Berita</a></li>
@@ -157,13 +157,14 @@
 			columnFormat: 'dddd',
 			buttonIcons: true,
 			eventLimit: true,
+			displayEventTime : false,
 			events: [
 				@foreach (\App\Kalender::all() as $kalender)
 				{
 					title: '{{ $kalender->judul }}',
-					start: '{{ $kalender->start->format('Y-m-d') }}',
+					start: '{{ $kalender->start->format('Y-m-d\\T00:00:00') }}',
 					@if ($kalender->end)
-					end: '{{ $kalender->end->format('Y-m-d') }}',
+					end: '{{ $kalender->end->format('Y-m-d\\T23:59:59') }}',
 					@endif
 				},
 				@endforeach
@@ -199,12 +200,17 @@
         	var y = $(this).scrollTop();
         	$('.scroll-show').each(function () {
 		        var t = $(this).parent().offset().top;
-		        if (y > t - 450) {
+		        if ($(window).width() >= 768) {
+			        if (y > t - 450) {
+			            $(this).css('opacity', 1);
+			            $(this).css('margin-top', 0);
+			        } else {
+			            $(this).css('opacity', 0);
+			            $(this).css('margin-top', '60px');
+			        }
+		        } else {
 		            $(this).css('opacity', 1);
 		            $(this).css('margin-top', 0);
-		        } else {
-		            $(this).css('opacity', 0);
-		            $(this).css('margin-top', '60px');
 		        }
 		    });
         });

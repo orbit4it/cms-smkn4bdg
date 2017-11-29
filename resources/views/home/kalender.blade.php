@@ -6,7 +6,7 @@
             <nav aria-label="breadcrumb" role="navigation">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">404 Not Found</li>
+                    <li class="breadcrumb-item active" aria-current="page">Calendar</li>
                 </ol>
             </nav>
             <div class="row">

@@ -28,7 +28,7 @@
     			<div class="panel-heading">
     				Form Berita
     			</div>
-				<form action="{{ @$berita ? url('admin/berita/' . $berita->id_berita . '/update') : url('admin/berita/store') }}" method="POST" enctype="multipart/form-data" class="form-berita">
+				<form action="{{ @$berita ? url('admin/berita/' . $berita->id_berita) : url('admin/berita') }}" method="POST" enctype="multipart/form-data" class="form-berita">
 					{{ csrf_field() }}
 					@if (@$berita)
 					{{ method_field('PATCH') }}

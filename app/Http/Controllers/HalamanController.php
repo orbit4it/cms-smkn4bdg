@@ -93,7 +93,7 @@ class HalamanController extends Controller
     	return redirect('admin/halaman')->with('success', 'Berhasil Mengubah Halaman');
     }
 
-    public function delete($id='')
+    public function destroy($id='')
     {
         $halaman = \App\Halaman::find($id);
         \Storage::delete($halaman->foto);

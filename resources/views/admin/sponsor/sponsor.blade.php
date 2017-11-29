@@ -45,8 +45,8 @@
 			    				<td><img src="{{ url('uploads/' . $sponsor->foto) }}" width="200"></td>
 			    				<td>{{ $sponsor->nama }}</td>
 			    				<td>
-			    					<form action="{{ url('admin/sponsor/' . $sponsor->id_sponsor . '/delete') }}" method="POST">
-				    					<a href="{{ url('admin/sponsor/' . $sponsor->id_sponsor) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+			    					<form action="{{ url('admin/sponsor/' . $sponsor->id_sponsor) }}" method="POST">
+				    					<a href="{{ url('admin/sponsor/' . $sponsor->id_sponsor . '/edit') }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
 				    					<button class="btn btn-danger btn-delete" type="submit"><i class="fa fa-trash"></i></button>
 			    					</form>
 			    				</td>
@@ -72,6 +72,7 @@
 			e.preventDefault();
 			var url = $(this).parent().attr('action');
 			var tr = $(this).parent().parent().parent();
+			console.log(url);
 			swal({
 				title: "Are you sure?",
 				text: "Your will not be able to recover this imaginary file!",

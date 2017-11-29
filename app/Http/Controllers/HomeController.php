@@ -25,7 +25,9 @@ class HomeController extends Controller
     {
         return view('home.index', [
             'data' => \App\Berita::orderBy('created_at', 'DESC')->get()->take(6),
-            'sponsors' => \App\Sponsor::all()
+            'sponsors' => \App\Sponsor::all(),
+            'kepalaSekolah' => \App\KepalaSekolah::where('status', 1)->first(),
+            'albums' => \App\Album::all()
         ]);
     }
 }

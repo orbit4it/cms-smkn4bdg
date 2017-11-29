@@ -66,7 +66,7 @@ class SponsorController extends Controller
     	return redirect('admin/sponsor')->with('success', 'Berhasil Mengubah Sponsor');
     }
 
-    public function delete($id='')
+    public function destroy($id='')
     {
     	$sponsor = \App\Sponsor::find($id);
         \Storage::delete($sponsor->foto);

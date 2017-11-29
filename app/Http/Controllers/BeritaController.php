@@ -104,7 +104,7 @@ class BeritaController extends Controller
     	return redirect('admin/berita')->with('success', 'Berhasil Mengubah Berita');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
     	$berita = \App\Berita::find($id);
         \Storage::delete($berita->foto);
@@ -117,7 +117,7 @@ class BeritaController extends Controller
     	return [
     		'judul' => 'required|max:150',
     		'deskripsi' => 'required',
-    		'foto' => 'mimes:jpeg,png|max:999999999999999999',
+    		'foto' => 'mimes:jpeg,png|max:100000',
     		'id_kategori' => 'required|exists:kategori'
     	];
     }

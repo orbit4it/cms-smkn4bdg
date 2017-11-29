@@ -1,5 +1,5 @@
 @extends('admin.header')
-@section('title', 'Berita')
+@section('title', 'Kepala Sekolah')
 @section('content')
 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
     <div class="page-header pull-left">
@@ -26,28 +26,28 @@
     	<div class="col-xs-12">
     		<div class="panel panel-default">
     			<div class="panel-heading">
-    				Data Berita
+    				Data Kepala Sekolah
     			</div>
 				<div class="panel-body">
-					<p><a href="{{ url('admin/berita/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Berita</a></p>
+					<p><a href="{{ url('admin/kepala-sekolah/create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Kepala Sekolah</a></p>
 			    	<table class="table table-bordered">
 			    		<thead>
 			    			<tr>
-				    			<th>No</th>
-				    			<th>Judul</th>
-				    			<th>Tanggal</th>
+				    			<th>#</th>
+				    			<th>Nama</th>
+				    			<th>Status</th>
 				    			<th>Action</th>
 			    			</tr>
 			    		</thead>
 			    		<tbody>
-			    			@foreach (\App\Berita::orderBy('created_at', 'DESC')->get() as $berita)
+			    			@foreach (\App\KepalaSekolah::all() as $kepalaSekolah)
 			    			<tr>
-			    				<td>{{ @$i ? $i += 1 : $i = 1 }}</td>
-			    				<td>{{ $berita->judul }}</td>
-			    				<td>{{ $berita->created_at->format('l, d F Y - H:i') }}</td>
+			    				<td width="120"><img src="{{ url('uploads/' . $kepalaSekolah->foto) }}" width="100"></td>
+			    				<td>{{ $kepalaSekolah->nama }}</td>
+			    				<td>{{ $kepalaSekolah->status == 1 ? 'Aktif' : 'Tidak Aktif' }}</td>
 			    				<td>
-			    					<form action="{{ url('admin/berita/' . $berita->id_berita) }}" method="POST">
-				    					<a href="{{ url('admin/berita/' . $berita->id_berita . '/edit') }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+			    					<form action="{{ url('admin/kepala-sekolah/' . $kepalaSekolah->id_kepala_sekolah) }}" method="POST">
+				    					<a href="{{ url('admin/kepala-sekolah/' . $kepalaSekolah->id_kepala_sekolah . '/edit') }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
 				    					<button class="btn btn-danger btn-delete" type="submit"><i class="fa fa-trash"></i></button>
 			    					</form>
 			    				</td>

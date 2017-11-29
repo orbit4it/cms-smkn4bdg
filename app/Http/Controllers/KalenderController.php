@@ -50,7 +50,7 @@ class KalenderController extends Controller
         return redirect('admin/kalender')->with('success', 'Berhasil Mengubah Data');
     }
 
-    public function delete($id='')
+    public function destroy($id='')
     {
         $kalender = \App\Kalender::find($id);
         $kalender->delete();

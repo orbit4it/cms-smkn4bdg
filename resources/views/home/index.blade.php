@@ -126,20 +126,18 @@
     		<div class="row sambutan-content text-center text-lg-left">
     			<div class="col-12 col-lg-3 offset-lg-1 scroll-show">
 	    			<div class="sambutan-overlay mx-auto mb-3">
-		    			<img src="{{ asset('') }}/image/PakAsepTapip.jpg" alt="Dr. Asep Tapip Yani, M.Pd">
+		    			<img src="{{ asset('') }}/uploads/{{ $kepalaSekolah->foto }}" alt="Dr. Asep Tapip Yani, M.Pd">
 	    			</div>
     			</div>
     			<div class="col-12 col-lg-7 scroll-show">
-    				<h3 class="mb-3">Dr. Asep Tapip Yani, M.Pd</h3>
-	    			<p>Sampurasun, SMKN 4 BANDUNG adalah Sekolah Menengah Kejuruan yang memiliki kelompok bidang keahlian Ketenaga Listrikan, Audio Video, dan Teknik Komputer dan Informatika. Keberadaannya didukung oleh dunia usaha dan dunia industri, baik dalam pembelajaran maupun penyerapan lulusannya. Pembelajaran teori dan praktek tidak hanya dilakukan di dalam kelas tetapi dilakukan di dunia industri melalui praktek kerja industri di perusahaan-perusahaan yang relevan.
-
-	    			<br><br>
-
-	    			Lulusannya telah tersebar di berbagai perguruan tinggi dan Dunia Usaha/Dunia Industri. Kesempatan untuk melanjutkan studi dan bekerja sangat terbuka luas bagi lulusannya. Jalur PMDK tersedia bagi lulusan yang berprestasi baik PN maupun Swasta. Bagi siswa yang ingin bekerja, penempatannya didukung oleh Disnaker melalui Bursa Kerja Khusus (BKK) sesuai dengan kualifikasi yang di persyaratkan oleh perusahaa, serta siswa dapat berwirausaha sesuai dengan kompetensi keahlian masing-masing.</p>
+    				<h3 class="mb-3">{{ $kepalaSekolah->nama }}</h3>
+	    			<p>{!! nl2br($kepalaSekolah->sambutan) !!}</p>
     			</div>
     		</div>
     	</div>
     </section>
+
+    @if ($albums->first())
 
     <section class="galeri">
         <div class="container">
@@ -151,7 +149,7 @@
                     <li class="nav-item">
                         <a href="#semua" class="nav-link active scroll-show" id="semua-tab" data-toggle="tab" href="#semua" role="tab" aria-controls="semua" aria-selected="true">Semua</a>
                     </li>
-                    @foreach (\App\Album::all() as $album)
+                    @foreach ($albums as $album)
                     <li class="nav-item">
                         <a href="#{{ $album->slug }}" class="nav-link scroll-show" id="{{ $album->slug }}-tab" data-toggle="tab" href="#{{ $album->slug }}" role="tab" aria-controls="{{ $album->slug }}" aria-selected="true">{{ $album->judul }}</a>
                     </li>
@@ -176,7 +174,7 @@
                         </div>
                     </div>
                 </div>
-                @foreach (\App\Album::all() as $album)
+                @foreach ($albums as $album)
                 <div class=" tab-pane fade show" id="{{ $album->slug }}" role="tabpanel" aria-labelledby="{{ $album->slug }}-tab">
                     <div class="row mx-0 content">
                         <div class="card-columns my-3 text-center">
@@ -203,6 +201,8 @@
             </div>
         </div>
     </section>
+
+    @endif
 
     <section class="tentang">
     	<div class="container">

@@ -28,7 +28,7 @@
     			<div class="panel-heading">
     				Form Halaman
     			</div>
-				<form action="{{ @$halaman ? url('admin/halaman/' . $halaman->id_halaman . '/update') : url('admin/halaman/store') }}" method="POST" enctype="multipart/form-data" class="form-halaman">
+				<form action="{{ @$halaman ? url('admin/halaman/' . $halaman->id_halaman) : url('admin/halaman') }}" method="POST" enctype="multipart/form-data" class="form-halaman">
 					{{ csrf_field() }}
 					@if (@$halaman)
 					{{ method_field('PATCH') }}

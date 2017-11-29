@@ -46,8 +46,8 @@
 			    				<td>{{ $halaman->judul }}</td>
 			    				<td>{{ $halaman->slug }}</td>
 			    				<td>
-			    					<form action="{{ url('admin/halaman/' . $halaman->id_halaman . '/delete') }}" method="POST">
-				    					<a href="{{ url('admin/halaman/' . $halaman->id_halaman) }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
+			    					<form action="{{ url('admin/halaman/' . $halaman->id_halaman ) }}" method="POST">
+				    					<a href="{{ url('admin/halaman/' . $halaman->id_halaman . '/edit') }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>
 				    					<button class="btn btn-danger btn-delete" type="submit"><i class="fa fa-trash"></i></button>
 			    					</form>
 			    				</td>

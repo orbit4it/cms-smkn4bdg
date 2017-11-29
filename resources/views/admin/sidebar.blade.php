@@ -83,24 +83,14 @@
                         </li>
                     </ul>
                 </li>
+                </li>
                 <li>
-                    <a href="#">
+                    <a href="{{url('admin/kepala-sekolah')}}">
                         <i class="fa fa-cog fa-fw">
-                            <div class="icon-bg bg-green"></div>
+                            <div class="icon-bg bg-orange"></div>
                         </i>
-                        <span class="menu-title">
-                            Admin
-                        </span>
-                        <span class="fa arrow"></span>
+                        <span class="menu-title">Kepala Sekolah</span>
                     </a>
-                    <ul class="nav nav-second-level">
-                        <li><a href="{{url('admin/import')}}"><i class="fa fa-briefcase"></i><span class="submenu-title">Import Data Master</span></a>
-                        </li>
-                        <li><a href="{{url('admin/export')}}"><i class="fa fa-archive"></i><span class="submenu-title">
-                            File Excel Data Login
-                        </span></a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </div>

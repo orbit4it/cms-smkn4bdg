@@ -28,7 +28,7 @@
     			<div class="panel-heading">
     				Form Sponsor
     			</div>
-				<form action="{{ @$sponsor ? url('admin/sponsor/' . $sponsor->id_sponsor . '/update') : url('admin/sponsor/store') }}" method="POST" enctype="multipart/form-data" class="form-sponsor">
+				<form action="{{ @$sponsor ? url('admin/sponsor/' . $sponsor->id_sponsor) : url('admin/sponsor') }}" method="POST" enctype="multipart/form-data" class="form-sponsor">
 					{{ csrf_field() }}
 					@if (@$sponsor)
 					{{ method_field('PATCH') }}
@@ -77,29 +77,6 @@
             window.close();
         },
 	});
-
-	// function processClose(file) {
- //        $(".modal-choose-file").modal('hide');
- //    }
-    
- //    function processSelectedFile(file) {
- //        $(".filename").show().html('<i class="fa fa-paperclip"></i> ' + file);
- //        $(".btnChooseFile").html("Ganti File");
- //        $("[name=file]").val(file);
- //    }
-    
- //    $(function() {
- //        @if(!empty($result))
- //            $(".btnChooseFile").html("Ganti File");
- //        @else
- //            $('.filename').hide();
- //        @endif
-        
- //        $(".btnChooseFile").click(function() {
- //            $(".modal-choose-file").modal('show');
- //            $(".modal-body").html('<iframe src="{{ url('elfinder/template/file') }}"></iframe>');
- //        });
- //    });
 
 </script>
 

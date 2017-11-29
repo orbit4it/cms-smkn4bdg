@@ -1,5 +1,5 @@
 @extends('admin.header')
-@section('title', 'Kalender')
+@section('title', 'Kepala Sekolah')
 @section('content')
 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
     <div class="page-header pull-left">
@@ -26,29 +26,37 @@
     	<div class="col-xs-12">
     		<div class="panel panel-default">
     			<div class="panel-heading">
-    				Form Kalender
+    				Form Kepala Sekolah
     			</div>
-				<form action="{{ @$kalender ? url('admin/kalender/' . $kalender->id_kalender) : url('admin/kalender') }}" method="POST" enctype="multipart/form-data" class="form-kalender">
+				<form action="{{ @$kepalaSekolah ? url('admin/kepala-sekolah/' . $kepalaSekolah->id_kepala_sekolah) : url('admin/kepala-sekolah') }}" method="POST" enctype="multipart/form-data" class="form-kepalaSekolah">
 					{{ csrf_field() }}
-					@if (@$kalender)
+					@if (@$kepalaSekolah)
 					{{ method_field('PATCH') }}
 					@endif
                     <div class="panel-body">
                         <div class="form-group">
-                            <label>Judul</label>
-                            <input type="text" name="judul" class="form-control" value="{{ old('judul') ? old('judul') : (@$kalender ? $kalender->judul : '') }}">
+                            <label>Nama</label>
+                            <input type="text" name="nama" class="form-control" value="{{ old('nama') ? old('nama') : (@$kepalaSekolah ? $kepalaSekolah->nama : '') }}">
                         </div>
                         <div class="form-group">
-                            <label>Mulai</label>
-                            <input type="text" name="start" class="form-control datepicker startDate" value="{{ old('start') ? old('start') : (@$kalender ? $kalender->start->format('m/d/Y') : '') }}">
+                            <label>Sambutan</label>
+                            <textarea name="sambutan" class="form-control" rows="5">{{ old('sambutan') ? old('sambutan') : (@$kepalaSekolah ? $kepalaSekolah->sambutan : '') }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label>Selesai (Opsional)</label>
-                            <input type="text" name="end" class="form-control datepicker endDate" value="{{ old('end') ? old('end') : (@$kalender ? $kalender->end->format('m/d/Y') : '') }}">
+                            <label>Foto</label>
+                            <input name="foto" class="form-control" type="file">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <select name="status" class="form-control">
+                                <option>Status</option>
+                                <option value="1" {{ old('status') == 1 ? 'selected' : @$kepalaSekolah->status == 1 ? 'selected' : ''}}>Aktif</option>
+                                <option value="2" {{ old('status') == 2 ? 'selected' : @$kepalaSekolah->status == 2 ? 'selected' : ''}}>Tidak Aktif</option>
+                            </select>
                         </div>
                     </div>
 					<div class="panel-footer text-right">
-						<a class="btn" href="{{ url('admin/kalender') }}">Cancel</a>
+						<a class="btn" href="{{ url('admin/kepala-sekolah') }}">Cancel</a>
 						<button type="submit" class="btn btn-primary">Save changes</button>
 					</div>
 				</form>

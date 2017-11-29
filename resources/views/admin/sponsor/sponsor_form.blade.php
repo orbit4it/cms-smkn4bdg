@@ -55,29 +55,3 @@
 
 </div><!-- END PAGE CONTENT -->
 @endsection
-
-@push('css')
-
-@endpush
-@push('js')
-<script src="{{ asset('assets') }}/vendors/unisharp/laravel-ckeditor/ckeditor.js"></script>
-<script src="{{ asset('assets') }}/vendors/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
-<script type="text/javascript">
-
-	$('textarea').ckeditor({
-		height:300,
-        filebrowserBrowseUrl : '{{ url('elfinder/ckeditor') }}',
-        getFileCallback : function(file) {
-            window.opener.CKEDITOR.tools.callFunction((function() {
-                var reParam = new RegExp('(?:[\?&]|&amp;)CKEditorFuncNum=([^&]+)', 'i') ;
-                var match = window.location.search.match(reParam) ;
-                return (match && match.length > 1) ? match[1] : '' ;
-            })(), file.url);
-            elf.destroy();
-            window.close();
-        },
-	});
-
-</script>
-
-@endpush

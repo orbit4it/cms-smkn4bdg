@@ -14,7 +14,7 @@
                     @foreach ($data as $berita)
                     <div class="col-12 col-md-4">
                         <div class="card">
-                            <img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="Card {{ asset('') }}/image cap">
+                            <img class="card-img-top" src="{{ asset( @$berita->foto ? 'uploads/' . $berita->foto : 'image/default-img.jpg' ) }}" alt="{{ $berita->judul }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $berita->judul }}</h5>
                                 <p class="card-text">{{ $berita->created_at->format('d F Y') }}</p>

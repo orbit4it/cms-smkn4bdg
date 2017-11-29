@@ -49,7 +49,7 @@
                         <div class="form-group">
                             <label>Status</label>
                             <select name="status" class="form-control">
-                                <option>Status</option>
+                                <option value="">Pilih Status</option>
                                 <option value="1" {{ old('status') == 1 ? 'selected' : @$kepalaSekolah->status == 1 ? 'selected' : ''}}>Aktif</option>
                                 <option value="2" {{ old('status') == 2 ? 'selected' : @$kepalaSekolah->status == 2 ? 'selected' : ''}}>Tidak Aktif</option>
                             </select>
@@ -68,15 +68,24 @@
 </div><!-- END PAGE CONTENT -->
 @endsection
 
-@push('css')
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.standalone.min.css">
-@endpush
 @push('js')
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+<script src="{{ asset('assets') }}/vendors/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="{{ asset('assets') }}/vendors/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+<script src="{{ asset('assets') }}/vendors/unisharp/laravel-ckeditor/config.js"></script>
 <script type="text/javascript">
-    $('.datepicker').datepicker({
-        todayBtn: true,
-        todayHighlight: true,
+    CKEDITOR.config.extraPlugins = 'justify';
+    $('textarea').ckeditor({
+        height:300,
+        filebrowserBrowseUrl : '{{ url('elfinder/ckeditor') }}',
+        getFileCallback : function(file) {
+            window.opener.CKEDITOR.tools.callFunction((function() {
+                var reParam = new RegExp('(?:[\?&]|&amp;)CKEditorFuncNum=([^&]+)', 'i') ;
+                var match = window.location.search.match(reParam) ;
+                return (match && match.length > 1) ? match[1] : '' ;
+            })(), file.url);
+            elf.destroy();
+            window.close();
+        },
     });
 </script>
 @endpush

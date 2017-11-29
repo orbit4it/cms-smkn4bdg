@@ -9,7 +9,8 @@
         <div class="carousel-inner">
             @for ($i = 0; $i < (count($data) < 3 ? count($data) : 3); $i++)
             <div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
-                <img class="d-block" src="{{ asset('uploads/' . $data[$i]->foto) }}" alt="{{ $data[$i]->judul }}">
+
+                <img class="d-block" src="{{ asset( @$data[$i]->foto ? 'uploads/' . $data[$i]->foto : 'image/default-img.jpg' ) }}" alt="{{ $data[$i]->judul }}">
                 <div class="carousel-caption text-center text-lg-right">
                     <div class="container">
                         <a href="{{ url('berita/' . $data[$i]->slug) }}" class="text-white">
@@ -34,7 +35,7 @@
                     @foreach ($data as $berita)
         			<div class="col-12 col-md-4">
         				<div class="card scroll-show">
-    						<img class="card-img-top" src="{{ asset('uploads/' . $berita->foto) }}" alt="{{ $berita->judul }}">
+    						<img class="card-img-top" src="{{ asset( @$berita->foto ? 'uploads/' . $berita->foto : 'image/default-img.jpg' ) }}" alt="{{ $berita->judul }}">
     						<div class="card-body">
     							<h5 class="card-title">{{ $berita->judul }}</h5>
                                 @php
@@ -131,7 +132,7 @@
     			</div>
     			<div class="col-12 col-lg-7 scroll-show">
     				<h3 class="mb-3">{{ $kepalaSekolah->nama }}</h3>
-	    			<p>{!! nl2br($kepalaSekolah->sambutan) !!}</p>
+	    			<p>{!! ($kepalaSekolah->sambutan) !!}</p>
     			</div>
     		</div>
     	</div>

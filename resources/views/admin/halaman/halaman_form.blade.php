@@ -67,6 +67,7 @@
 <script src="{{ asset('assets') }}/vendors/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="{{ asset('assets') }}/vendors/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 <script type="text/javascript">
+    CKEDITOR.config.extraPlugins = 'justify';
 
 	$('textarea').ckeditor({
 		height:300,

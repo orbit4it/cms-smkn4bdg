@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <label>Selesai (Opsional)</label>
-                            <input type="text" name="end" class="form-control datepicker endDate" value="{{ old('end') ? old('end') : (@$kalender ? $kalender->end->format('m/d/Y') : '') }}">
+                            <input type="text" name="end" class="form-control datepicker endDate" value="{{ old('end',@$kalender->end ? $kalender->end->format('m/d/Y') : '' ) }}">
                         </div>
                     </div>
 					<div class="panel-footer text-right">

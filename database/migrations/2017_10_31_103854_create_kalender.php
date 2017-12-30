@@ -17,7 +17,7 @@ class CreateKalender extends Migration
             $table->increments('id_kalender');
             $table->string('judul', 150);
             $table->date('start');
-            $table->date('end')->nullable();
+            $table->date('end');
         });
     }
 

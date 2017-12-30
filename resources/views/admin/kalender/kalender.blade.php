@@ -46,7 +46,7 @@
 			    				<td>{{ @$i ? $i += 1 : $i = 1 }}</td>
 			    				<td>{{ $kalender->judul }}</td>
 			    				<td>{{ $kalender->start->format('d F Y') }}</td>
-			    				<td>{{ $kalender->end->format('d F Y') }}</td>
+			    				<td>{{ @$kalender->end ? $kalender->end->format('d F Y') : '-' }}</td>
 			    				<td>
 			    					<form action="{{ url('admin/kalender/' . $kalender->id_kalender) }}" method="POST">
 				    					<a href="{{ url('admin/kalender/' . $kalender->id_kalender . '/edit') }}" class="btn btn-warning"><i class="fa fa-pencil"></i></a>

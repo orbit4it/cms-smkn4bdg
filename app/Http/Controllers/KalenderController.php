@@ -44,7 +44,7 @@ class KalenderController extends Controller
         $data = [
             'judul' => $input['judul'],
             'start' => \Carbon\Carbon::parse($input['start']),
-            'end' => \Carbon\Carbon::parse($input['end']),
+            'end' => @$input['end'] ? \Carbon\Carbon::parse($input['end']) : null,
         ];
         $kalender = \App\Kalender::find($id);
         $kalender->update($data);

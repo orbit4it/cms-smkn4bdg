@@ -62,7 +62,7 @@ class KalenderController extends Controller
     	return [
     		'judul' => 'required|max:150',
     		'start' => 'date',
-    		'end' => 'date|after:start'
+    		'end' => 'nullable|date|after:start'
     	];
     }
 

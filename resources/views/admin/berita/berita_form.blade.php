@@ -55,6 +55,10 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>Tanggal</label>
+                            <input type="date" name="created_at" class="form-control" value="{{ old('created_at', @$berita->created_at->format('Y-m-d')) }}">
+                        </div>
 					</div>
 					<div class="panel-footer text-right">
 						<a class="btn" href="{{ url('admin/berita') }}">Cancel</a>

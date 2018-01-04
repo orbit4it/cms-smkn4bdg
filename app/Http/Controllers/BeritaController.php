@@ -64,8 +64,12 @@ class BeritaController extends Controller
     		'foto' => $foto,
     		'slug' => $slug,
     		'id_kategori' => $input['id_kategori'],
-    		'hits' => 0
+    		'hits' => 0,
     	];
+
+        if ($input['created_at']) {
+            $data['created_at'] = $input['created_at'];
+        }
 
     	\App\Berita::create($data);
 
@@ -99,6 +103,10 @@ class BeritaController extends Controller
     		$data['foto'] = $foto;
     	}
 
+        if ($input['created_at']) {
+            $data['created_at'] = $input['created_at'];
+        }
+
     	$berita = \App\Berita::find($id);
     	$berita->update($data);
     	return redirect('admin/berita')->with('success', 'Berhasil Mengubah Berita');
@@ -118,7 +126,8 @@ class BeritaController extends Controller
     		'judul' => 'required|max:150',
     		'deskripsi' => 'required',
     		'foto' => 'mimes:jpeg,png|max:100000',
-    		'id_kategori' => 'required|exists:kategori'
+    		'id_kategori' => 'required|exists:kategori',
+            'created_at' => 'nullable|date'
     	];
     }
 }

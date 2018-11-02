@@ -96,7 +96,7 @@
 		    			<div id="googleMap"></div>
 		    		</div>
 		    		<div class="col-12 col-sm-6 col-lg-4 offset-lg-1 footer-info text-center text-sm-left mb-3 pb-3">
-		    			<img src="{{ asset('') }}image/smkn4.png">
+		    			<img class="img-logo" src="{{ asset('') }}image/smkn4.png">
 		    			<h5>SMK NEGERI 4 BANDUNG</h5>
 		    			<p>
 		    				Jalan Kliningan Nomor 6 Buah Batu<br>
@@ -107,12 +107,19 @@
 			    		</p>
 		    			<a href="https://twitter.com/smkn4bdg"><i class="fa fa-twitter fa-lg"></i></a>
 		    			<a href="https://www.facebook.com/smkn4bandung/"><i class="fa fa-facebook fa-lg"></i></a>
+		    			<a href="line://ti/p/@smkn4bdg"><img src="{{ asset('image/line.png') }}" style="width:40px; height: 40px; margin-bottom: 1px; margin-left: 1px;"></a>
 		    		</div>
 		    		<div class="col-12 col-sm-6 col-lg-4 text-center text-sm-right text-md-left">
 		    			<ul class="footer-nav">
 							<li><a href="{{ url('') }}">Beranda</a></li>
 							<li><a href="{{ url('berita') }}">Berita</a></li>
 							<li><a href="https://prestasi.smkn4bdg.sch.id/">Prestasi</a></li>
+							<li><a href="http://disdik.jabarprov.go.id/">Dinas Pendidikan Jawa Barat</a></li>
+							<li><a href="https://www.kemdikbud.go.id/">Kementrian Pendidikan dan Kebudayaan</a></li>
+							<li><a href="http://referensi.data.kemdikbud.go.id/">Referensi Pendidikan</a></li>
+							<li><a href="{{ url('literasi') }}">Digital Literasi</a></li>
+							<li><a href="https://www.kemdikbud.go.id/">Sitemap</a></li>
+							<li><a href="https://www.kemdikbud.go.id/">Tanya Jawab</a></li>
 						</ul>
 		    		</div>
 		    	</div>

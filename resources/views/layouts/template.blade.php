@@ -97,6 +97,8 @@
 		    		</div>
 		    		<div class="col-12 col-sm-6 col-lg-4 offset-lg-1 footer-info text-center text-sm-left mb-3 pb-3">
 		    			<img class="img-logo" src="{{ asset('') }}image/smkn4.png">
+		    			<img class="img-dinas" src="{{ asset('') }}image/logodinas.png" style="width: 120px">
+		    			<img class="img-kemdikbud" src="{{ asset('') }}image/logokemdikbud.png" style="width: 80px">
 		    			<h5>SMK NEGERI 4 BANDUNG</h5>
 		    			<p>
 		    				Jalan Kliningan Nomor 6 Buah Batu<br>

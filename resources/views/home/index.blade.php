@@ -127,12 +127,12 @@
     		<div class="row sambutan-content text-center text-lg-left">
     			<div class="col-12 col-lg-3 offset-lg-1 scroll-show">
 	    			<div class="sambutan-overlay mx-auto mb-3">
-		    			<img src="{{ asset('') }}/uploads/{{ $kepalaSekolah->foto }}" alt="Dr. Asep Tapip Yani, M.Pd">
+		    			<img src="{{ asset('') }}/uploads/{{ @$kepalaSekolah->foto }}" alt="Dr. Asep Tapip Yani, M.Pd">
 	    			</div>
     			</div>
     			<div class="col-12 col-lg-7 scroll-show">
-    				<h3 class="mb-3">{{ $kepalaSekolah->nama }}</h3>
-	    			<p>{!! ($kepalaSekolah->sambutan) !!}</p>
+    				<h3 class="mb-3">{{ @$kepalaSekolah->nama }}</h3>
+	    			<p>{!! (@$kepalaSekolah->sambutan) !!}</p>
     			</div>
     		</div>
     	</div>

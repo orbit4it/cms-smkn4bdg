@@ -51,7 +51,7 @@ Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 
 // Admin
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['web', 'auth'])->group(function () {
 
 	Route::prefix('admin')->group(function () {
 
@@ -87,35 +87,21 @@ Route::middleware(['auth'])->group(function () {
 
 		// Kepala Sekolah
 		Route::resource('kepala-sekolah', 'KepalaSekolahController');
+
+        Route::get('setting', 'SettingController@index')->name('setting.index');
+        Route::patch('setting', 'SettingController@update')->name('setting.update');
 	});
 
 	// Elfinder
 	Route::get('/elfinder/set_dir', function() {
-		// \Config::set('elfinder.dir', 'a');
-  //       \Session::forget('dir');
-  //       \Session::put('dir', 'a');
-		// return \Config::get('elfinder.dir');
 	});
 
 	Route::get('/elfinder/template/{param?}', function($param) {
-        // Session::forget('dir');
-        // Session::put('dir', ['uploads/aw']);
-        // $t = new \Barryvdh\Elfinder\ElfinderController(App::getInstance());
-        // return $t->showPopup($param);
     });
     
     Route::get('/elfinder/filemanager/{any?}', function($param) {
-        // Session::forget('dir');
-        // Session::put('dir', ['uploads/aw']);
         $t = new \Barryvdh\Elfinder\ElfinderController(App::getInstance());
         return $t->showPopup($param);
     });
-    
-    // Route::get('/fix', function() {
-    //     $pendaftar = \App\PesertaSkripsi::all();
-    //     foreach($pendaftar as $row) {
-    //         $row->nama_lengkap = strtoupper($row->nama_lengkap);
-    //         $row->save();
-    //     }
-    // });
+
 });

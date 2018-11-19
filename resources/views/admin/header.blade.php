@@ -33,8 +33,7 @@
 	<link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/css/themes/style1/orange-blue.css" id="theme-change" class="style-change color-change">
 	<link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/css/style-responsive.css">
 	<link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/css/style.css">
-	<link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/vendors/pageloader/pageloader.css">
-    
+
   <link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/vendors/DataTables/media/css/jquery.dataTables.css">
   <link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/vendors/DataTables/media/css/dataTables.bootstrap.css">
   <link type="text/css" rel="stylesheet" href="{{ asset('assets') }}/vendors/sweetalert/dist/sweetalert.css">
@@ -42,20 +41,8 @@
 
     @stack('css')
 </head>
-<body class=" ">
-<div id="preloader">
-	<div id="pageloader3">
-		<div class="spinner demo">
-			<div class="loader">
-			  <div class="circle"></div>
-			  <div class="circle"></div>
-			  <div class="circle"></div>
-			  <div class="circle"></div>
-			  <div class="circle"></div>
-			</div>
-		</div>
-	</div>
-</div>
+<body>
+
 <div><!-- UTAMA -->
     
 <!--BEGIN BACK TO TOP-->

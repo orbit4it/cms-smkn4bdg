@@ -43,8 +43,6 @@
 @stack('js')
 
 <script type="text/javascript">	
-	$('body').delay(350).css({'overflow':'hidden'});
-	
 	$(document).on("ready", function() {
         var loc = location.href.split("/");
         if (loc[loc.length-1] == "") loc = loc.splice(0, loc.length-1);
@@ -63,16 +61,6 @@
         loc = loc.join("/");
         
         $('.sidemenu [href="' + loc + '"]').parent().addClass("active").parent().parent().addClass("active").removeClass('collapse');
-		
-		// $(".spinner").fadeOut();
-		$(window).load(function() {
-			$("#preloader").fadeOut("slow");
-			$('body').delay(350).css({'overflow':'visible'});
-			$("body").addClass("animated fadeIn");
-			setTimeout(function() {
-				$("body").removeClass("animated fadeIn");
-			}, 500);
-		});
 
 	});
 	

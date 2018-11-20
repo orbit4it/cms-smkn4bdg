@@ -46,7 +46,6 @@ class SettingController extends Controller
             }
             return response()->json(['message' => 'success'], 200);
         } catch (\Exception $exception) {
-
             return response()->json(['message' => 'error'], 422);
         }
     }

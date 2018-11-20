@@ -16,6 +16,7 @@ Route::get('/', 'HomeController@index');
 
 // Halaman
 Route::get('/info/{id}', 'HalamanController@show');
+Route::get('page-id/{page}', 'HalamanController@shortUrl');
 
 // Berita
 Route::get('/berita', 'BeritaController@show_all');

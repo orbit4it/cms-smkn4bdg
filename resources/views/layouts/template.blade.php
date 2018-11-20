@@ -121,7 +121,7 @@
 							<li><a href="http://referensi.data.kemdikbud.go.id/">Referensi Pendidikan</a></li>
 							<li><a href="{{ url('literasi') }}">Digital Literasi</a></li>
 							<li><a href="https://www.kemdikbud.go.id/">Sitemap</a></li>
-							<li><a href="https://www.kemdikbud.go.id/">Tanya Jawab</a></li>
+							<li><a href="{{ url('page/tanyajawab') }}">Tanya Jawab</a></li>
 						</ul>
 		    		</div>
 		    	</div>

@@ -17,6 +17,9 @@ Route::get('/', 'HomeController@index');
 // Halaman
 Route::get('/info/{id}', 'HalamanController@show');
 Route::get('page-id/{page}', 'HalamanController@shortUrl');
+Route::get('lkss2019', function() {
+    return redirect('page-id/6');
+});
 
 // Berita
 Route::get('/berita', 'BeritaController@show_all');

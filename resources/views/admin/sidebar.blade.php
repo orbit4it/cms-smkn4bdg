@@ -83,13 +83,20 @@
                         </li>
                     </ul>
                 </li>
-                </li>
                 <li>
                     <a href="{{url('admin/kepala-sekolah')}}">
-                        <i class="fa fa-cog fa-fw">
+                        <i class="fa fa-user fa-fw">
                             <div class="icon-bg bg-orange"></div>
                         </i>
                         <span class="menu-title">Kepala Sekolah</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{url('admin/setting')}}">
+                        <i class="fa fa-cog fa-fw">
+                            <div class="icon-bg bg-orange"></div>
+                        </i>
+                        <span class="menu-title">Setting</span>
                     </a>
                 </li>
             </ul>

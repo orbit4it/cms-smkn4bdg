@@ -228,6 +228,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'MenuHelper' => App\Http\Helpers\MenuHelper::class,
+
     ],
 
 ];

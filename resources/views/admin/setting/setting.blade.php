@@ -156,7 +156,8 @@
                         console.log(parent.data('id'))
                         item.data('parent', parent.data('id'))
                     } else {
-                        item.data('parent', null)
+                        item.data('parent', '')
+                        console.log("no-parent")
                     }
                 },
             }).disableSelection();
@@ -175,6 +176,8 @@
                         parent: $(item).data('parent'),
                     })
                 })
+
+                console.log(data)
 
                 $.ajax({
                     url: '{{ route('setting.update') }}',
@@ -222,7 +225,6 @@
             })
 
             $('.btn-remove-nav').click(function () {
-
                 let id = $(this).data('nav')
 
                 let parent = $(this).parent().parent()

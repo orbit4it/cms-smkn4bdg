@@ -97,7 +97,7 @@
     			<div class="col-6 col-md-4 text-center keahlian-item">
 					<img class="keahlian-img" src="{{ asset('') }}/image/icon-toi.png" alt="TOI SMKN 4 Bandung">
 					<div class="keahlian-text">
-						<h5 class="keahlian-title"><b>TEKNIK OTOMASI INDSUTRI</b></h5>
+						<h5 class="keahlian-title"><b>TEKNIK OTOMASI INDUSTRI</b></h5>
 						<a href="{{ url('program-studi/toi') }}">Baca Selengkapnya</a>
 					</div>
     			</div>

@@ -21,6 +21,10 @@ Route::get('lkss2019', function() {
     return redirect('page-id/6');
 });
 
+Route::get('lkss2021', function() {
+    return redirect('page-id/8');
+});
+
 // Berita
 Route::get('/berita', 'BeritaController@show_all');
 Route::get('/berita/{id}', 'BeritaController@show');

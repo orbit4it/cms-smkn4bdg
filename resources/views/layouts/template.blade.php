@@ -60,7 +60,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12 col-lg-3">
-					<div id="googleMap"></div>
+					<div id="googleMap">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.5728150973055!2d107.62668741521406!3d-6.9415470949847835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e86413eb50ad%3A0xf9930b5268e3fee1!2sSMKN%204%20Bandung!5e0!3m2!1sen!2sid!4v1626333703443!5m2!1sen!2sid"
+								width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+					</div>
 				</div>
 				<div class="col-12 col-sm-6 col-lg-4 offset-lg-1 footer-info text-center text-sm-left mb-3 pb-3">
 					<img class="img-logo" src="{{ asset('') }}image/smkn4.png">
@@ -112,20 +115,6 @@
 @stack('js')
 
 <script type="text/javascript">
-  function myMap() {
-    var myCenter = new google.maps.LatLng(-6.9416583, 107.6288947);
-    var mapCanvas = document.getElementById("googleMap");
-    var mapOptions = {
-      center: myCenter,
-      zoom: 17
-    };
-    var map = new google.maps.Map(mapCanvas, mapOptions);
-    var marker = new google.maps.Marker({
-      position: myCenter
-    });
-    marker.setMap(map);
-  }
-
   $('#calendar').fullCalendar({
     header: {
       left: 'title',
@@ -194,8 +183,5 @@
     });
   });
 </script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbJ83iOH3BNaVWtOjaKUikj9sx2OIHzfs&callback=myMap"></script>
 </body>
-
 </html>

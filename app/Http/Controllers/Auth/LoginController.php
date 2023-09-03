@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -51,9 +52,8 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        $user = \App\User::where($request->except('_token'))->first();
-
-        if ($user) {
+        $user = \App\User::where('username', $request->username)->first();
+        if ($user && Hash::check($request->password, $user->password)) {
             Auth::loginUsingId($user->id_user);
             return redirect('admin');
         }

@@ -10,19 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Route;
 
 // Home
 Route::get('/', 'HomeController@index');
-
 // Halaman
 Route::get('/info/{id}', 'HalamanController@show');
 Route::get('page-id/{page}', 'HalamanController@shortUrl');
-Route::get('lkss2019', function() {
-    return redirect('page-id/6');
+Route::get('lkss2019', function () {
+	return redirect('page-id/6');
 });
 
-Route::get('lkss2021', function() {
-    return redirect('page-id/8');
+Route::get('lkss2021', function () {
+	return redirect('page-id/8');
 });
 
 // Berita
@@ -30,10 +30,10 @@ Route::get('/berita', 'BeritaController@show_all');
 Route::get('/berita/{id}', 'BeritaController@show');
 
 // Program Studi
-Route::get('/program-studi/{id}', function($id='') {
+Route::get('/program-studi/{id}', function ($id = '') {
 	$view = 'studi.' . $id;
-	if(view()->exists($view)){
-	    return view($view)->render();
+	if (view()->exists($view)) {
+		return view($view)->render();
 	}
 	return view('home.404');
 });
@@ -42,10 +42,10 @@ Route::get('/program-studi/{id}', function($id='') {
 Route::get('/album/{id}', 'AlbumController@show');
 
 // Ekstrakurikuler
-Route::get('/ekstrakurikuler/{id}', function($id='') {
+Route::get('/ekstrakurikuler/{id}', function ($id = '') {
 	$view = 'ekskul.' . $id;
-	if(view()->exists($view)){
-	    return view($view)->render();
+	if (view()->exists($view)) {
+		return view($view)->render();
 	}
 	return view('home.404');
 });
@@ -56,6 +56,7 @@ Route::get('/calendar', function () {
 
 // Auth
 Auth::routes();
+Route::post('/login', 'Auth\LoginController@login');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 // Admin
@@ -96,20 +97,20 @@ Route::middleware(['web', 'auth'])->group(function () {
 		// Kepala Sekolah
 		Route::resource('kepala-sekolah', 'KepalaSekolahController');
 
-        Route::get('setting', 'SettingController@index')->name('setting.index');
-        Route::patch('setting', 'SettingController@update')->name('setting.update');
+		Route::get('setting', 'SettingController@index')->name('setting.index');
+		Route::patch('setting', 'SettingController@update')->name('setting.update');
 	});
 
 	// Elfinder
-	Route::get('/elfinder/set_dir', function() {
+	Route::get('/elfinder/set_dir', function () {
 	});
 
-	Route::get('/elfinder/template/{param?}', function($param) {
-    });
-    
-    Route::get('/elfinder/filemanager/{any?}', function($param) {
-        $t = new \Barryvdh\Elfinder\ElfinderController(App::getInstance());
-        return $t->showPopup($param);
-    });
+	Route::get('/elfinder/template/{param?}', function ($param) {
+	});
+
+	Route::get('/elfinder/filemanager/{any?}', function ($param) {
+		$t = new \Barryvdh\Elfinder\ElfinderController(App::getInstance());
+		return $t->showPopup($param);
+	});
 
 });

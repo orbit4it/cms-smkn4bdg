@@ -29,6 +29,10 @@ Route::get('lkss2021', function () {
 Route::get('/berita', 'BeritaController@show_all');
 Route::get('/berita/{id}', 'BeritaController@show');
 
+
+// Kontak Kami
+Route::get('/contact', 'KontakController@index');
+
 // Program Studi
 Route::get('/program-studi/{id}', function ($id = '') {
 	$view = 'studi.' . $id;

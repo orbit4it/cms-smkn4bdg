@@ -31,7 +31,7 @@ Route::get('/berita/{id}', 'BeritaController@show');
 
 
 // Kontak Kami
-Route::get('/contact', 'KontakController@index');
+Route::get('/kontak', 'KontakController@show');
 
 // Program Studi
 Route::get('/program-studi/{id}', function ($id = '') {
@@ -101,6 +101,11 @@ Route::middleware(['web', 'auth'])->group(function () {
 		// Kepala Sekolah
 		Route::resource('kepala-sekolah', 'KepalaSekolahController');
 
+		// Kontak
+		Route::get('kontak', 'KontakController@index')->name('kontak.index');
+		Route::patch('kontak', 'KontakController@update')->name('kontak.update');
+
+		// Setting?
 		Route::get('setting', 'SettingController@index')->name('setting.index');
 		Route::patch('setting', 'SettingController@update')->name('setting.update');
 	});

@@ -8,12 +8,12 @@
                     <p>Hubungi kami untuk pertanyaan atau informasi lebih lanjut tentang SMKN 4 Bandung. Kami siap melayani
                         Anda dengan senang hati. <br> <br> Jam Kerja:
                         Senin-Jumat: 08.00 - 16.00 WIB </p>
-                    <a href="mailto:info@smkn4bdg.sch.id" class="btn btn-primary">
+                    <a href="mailto:{{ $kontak->email }}" class="btn btn-primary">
                         <i class="fa fa-envelope-o"></i> Kirim Pesan
                     </a>
                     <hr class="pembagi">
-                    <p class="kontak-sumber"><span>Telepon: </span>(022)-7303736</p>
-                    <p class="kontak-sumber"><span>Alamat: </span>Jl. Kliningan No.6, Turangga (40264),Lengkong</p>
+                    <p class="kontak-sumber"><span>Telepon: </span>{{ $kontak->telepon }}</p>
+                    <p class="kontak-sumber"><span>Alamat: </span> {{ $kontak->alamat }} </p>
 
                     {{-- Sosmed --}}
                     <div class="col-lg-6 col-sm-12 kontak-sosmed">
@@ -21,7 +21,7 @@
                         <div class="row ">
                             <div class="col-2">
                                 {{-- Facebook --}}
-                                <a href="https://www.facebook.com/smkn4bandung">
+                                <a href={{ $kontak->facebook_link }}>
                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -35,7 +35,7 @@
                             </div>
                             <div class="col-2">
                                 {{-- Instagram --}}
-                                <a href="https://www.instagram.com/smknegeri4bandung/">
+                                <a href={{ $kontak->instagram_link }}>
                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -55,7 +55,7 @@
                             </div>
                             <div class="col-2">
                                 {{-- Twitter --}}
-                                <a href="https://twitter.com/smkn4bdg">
+                                <a href={{$kontak->twitter_link}}>
                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-2">
                                 {{-- Tik Tok --}}
-                                <a href="https://tiktok.com/@smknegeri4bandung">
+                                <a href={{$kontak->tiktok_link}}>
                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -80,8 +80,8 @@
                                 </a>
                             </div>
                             <div class="col-2">
-                                {{-- Instagram --}}
-                                <a href="https://www.youtube.com/c/SMKN4BANDUNGOfficial">
+                                {{-- Youtube --}}
+                                <a href={{$kontak->youtube_link}}>
                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path

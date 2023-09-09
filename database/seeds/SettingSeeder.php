@@ -15,7 +15,7 @@ class SettingSeeder extends Seeder
         $this->storeSetting('navs_list', [
             ["url" => null, "name" => "Beranda"],
             ["url" => "berita", "name" => "Berita"],
-            ["url" => "contact", "name" => "Kontak Kami"],
+            ["url" => "kontak", "name" => "Kontak Kami"],
             ["name" => "Profil", "url" => "profil"],
             ["name" => "Ekstrakurikuler", "url" => "ekstrakurikuler"],
         ]);
@@ -44,7 +44,7 @@ class SettingSeeder extends Seeder
             [
                 "id" => "2",
                 "name" => "Kontak Kami",
-                "url" => "contact",
+                "url" => "kontak",
                 "parent" => null,
             ],
             ["id" => "6", "name" => "Prestasi", "url" => "prestasi", "parent" => null],

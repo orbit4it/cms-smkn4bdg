@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             ExampleDefaultSeeder::class,
             SettingSeeder::class,
             KontakSeeder::class,
+            ProgramStudiSeeder::class,
         ]);
     }
 }

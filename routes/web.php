@@ -25,7 +25,7 @@ Route::get('lkss2021', function () {
 	return redirect('page-id/8');
 });
 
-// Berita
+// Berita`
 Route::get('/berita', 'BeritaController@show_all');
 Route::get('/berita/{id}', 'BeritaController@show');
 
@@ -34,13 +34,14 @@ Route::get('/berita/{id}', 'BeritaController@show');
 Route::get('/kontak', 'KontakController@show');
 
 // Program Studi
-Route::get('/program-studi/{id}', function ($id = '') {
-	$view = 'studi.' . $id;
-	if (view()->exists($view)) {
-		return view($view)->render();
-	}
-	return view('home.404');
-});
+// Route::get('/program-studi/{id}', function ($id = '') {
+// 	$view = 'studi.' . $id;
+// 	if (view()->exists($view)) {
+// 		return view($view)->render();
+// 	}
+// 	return view('home.404');
+// });
+Route::get('/program-studi/{slug}', 'ProgramStudiController@show');
 
 // Album
 Route::get('/album/{id}', 'AlbumController@show');
